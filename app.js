@@ -19,7 +19,7 @@ function findCity (name, cities) {
 
 /*
  * Run a [callback] function over all connections
- * of a given [city]
+ * of a [city]
  */
 function eachConnection (city, callback) {
   city.connections.forEach(function (connection) {
@@ -28,7 +28,7 @@ function eachConnection (city, callback) {
   });
 }
 
-/* Return all cities connected to a given [city] */
+/* Return all cities connected to a [city] */
 function findConnections (city) {
   var cities = [];
   city.connections.forEach(function (connection) {
@@ -37,30 +37,47 @@ function findConnections (city) {
   return cities;
 }
 
+/* Treat one or multiple [times] drugs on a [city] */
 function treat (city, times) {
   times = times || 1;
-  city.drugs = city.drugs - times;
+  if (city.drugs - times < 0) {
+    city.drugs = 0;
+  } else {
+    city.drugs -= times;
+  }
 }
 
+/* Treat all drugs on a [city] */
 function treatAll (city) {
-  city.drugs = 0;
+  treat(city, 3);
 }
 
+/*
+ * Infect a [city] one or multiple [times]
+ * If a city would have more than 3 drugs,
+ * an outbreak occurs instead
+ */
 function infect (city, times, hasOutbreak) {
   var times = times || 1;
   city.drugs = city.drugs || 0;
-  hasOutbreak = hasOutbreak || [];
-
   if (city.drugs + times > 3) {
     city.drugs = 3;
-    hasOutbreak.push(city);
     outbreak(city, hasOutbreak);
   } else {
     city.drugs += times;
   }
 }
 
+/*
+ * Add [city] to [hasOutbreak] list
+ * Infect all connected cities, cities
+ * which have an outbreak already don't
+ * have an outbreak twice
+ */
 function outbreak (city, hasOutbreak) {
+  hasOutbreak = hasOutbreak || [];
+  hasOutbreak.push(city);
+
   eachConnection(city, function (connection) {
     if (!containsCity(connection, hasOutbreak)) {
       infect(connection, 1, hasOutbreak);
@@ -68,6 +85,7 @@ function outbreak (city, hasOutbreak) {
   });
 }
 
+/* Test if a [city] is in the [list] */
 function containsCity (city, list) {
   for (var i = 0; i < list.length; i++) {
     if (city === list[i]) {
