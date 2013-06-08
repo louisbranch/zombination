@@ -40,7 +40,7 @@
   {"name": "Beijing", "color" : "red", "connections": ["Seoul", "Shangai"]},
   {"name": "Shangai", "color" : "red", "connections": ["Beijing", "Hong Kong", "Seoul", "Taipei", "Tokyo"]},
   {"name": "Hong Kong", "color" : "red", "connections": ["Bangkok", "Ho Chi Mingh City", "Kolkata", "Manila", "Shangai", "Taipei"]},
-  {"name": "Ho Chi Ming City", "color" : "red", "connections": ["Bangkok", "Hong Kong", "Jakarta", "Manila", "Sydney"]},
+  {"name": "Ho Chi Mingh City", "color" : "red", "connections": ["Bangkok", "Hong Kong", "Jakarta", "Manila", "Sydney"]},
   {"name": "Seoul", "color" : "red", "connections": ["Beijing", "Shangai Kong", "Tokyo"]},
   {"name": "Taipei", "color" : "red", "connections": ["Hong Kong", "Manila", "Osaka", "Shangai"]},
   {"name": "Manila", "color" : "red", "connections": ["Hong Kong", "Ho Chi Ming City", "San Francisco", "Sydney", "Taipei"]},

@@ -11,7 +11,7 @@ module.exports = function(grunt) {
     },
     exec: {
       test: {
-        cmd: 'node test/app_test.js'
+        cmd: 'mocha'
       }
     }
   });
