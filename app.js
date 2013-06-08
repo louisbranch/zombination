@@ -4,8 +4,7 @@ module.exports = {
   findCity: findCity,
   findConnections: findConnections,
   infect: infect,
-  treat: treat,
-  treatAll: treatAll
+  treat: treat
 };
 
 /* Find a city by [name] and return it */
@@ -45,11 +44,6 @@ function treat (city, times) {
   } else {
     city.drugs -= times;
   }
-}
-
-/* Treat all drugs on a [city] */
-function treatAll (city) {
-  treat(city, 3);
 }
 
 /*
