@@ -1,10 +1,10 @@
 {
-  "name": "black_market",
+  "name": "zombination",
   "version": "0.0.0",
-  "description": "Banish illegal drugs across the world",
+  "description": "Kill zombies and cure the diseases for zombies outbreak",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --recursive"
   },
   "repository": "",
   "author": "Luiz Branco <me@luizbranco.com>",
@@ -16,6 +16,7 @@
     "grunt-exec": "~0.4.1",
     "grunt-contrib-watch": "~0.4.4",
     "browserify": "~2.18.0",
-    "sinon": "~1.7.2"
+    "sinon": "~1.7.2",
+    "lodash": "~1.3.1"
   }
 }

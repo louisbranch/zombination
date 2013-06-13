@@ -1,78 +1,77 @@
+var assert = require('assert');
+var sinon = require('sinon');
+
 var zombies = require('../../lib/zombies.js');
 var search = require('../../lib/search.js');
-var assert = require('assert');
+var Game = require('../../lib/game.js');
 
-describe('zombies.infect', function () {
-  it('adds one zombie to a city by default', function () {
-    var city = search.city('New York');
-    zombies.infect(city);
-    assert.equal(city.zombies, 1);
+var city, game;
+
+describe('zombies', function () {
+
+  beforeEach(function () {
+    game = new Game();
+    sinon.spy(game, 'e');
+    city = {zombies: 0, connections: []};
   });
 
-  it('adds up to 3 zombies to a city', function () {
-    var city = search.city('New York');
-    zombies.infect(city, 4);
-    assert.equal(city.zombies, 3);
-  });
+  describe('.infect', function () {
 
-  it('infects all cities connected to a city outbreaking', function () {
-    var city = search.city('Lima');
-    var connections = search.connections(city);
-    zombies.infect(city, 4);
-    assert.deepEqual(connections, [
-      { name: 'Bogotá',
-        color: 'yellow',
-        connections: [ 'Buenos Aires', 'Lima', 'Mexico City', 'São Paulo' ],
-        zombies: 1 },
-      { name: 'Mexico City',
-        color: 'yellow',
-        connections: [ 'Bogotá', 'Chicago', 'Lima', 'Los Angeles', 'Miami' ],
-        zombies: 1 },
-      { name: 'Santiago',
-        color: 'yellow',
-        connections: [ 'Lima' ],
-        zombies: 1 }
-    ]);
-  });
+    it('adds a zombie to a city', function () {
+      zombies.infect(city, {}, game);
+      assert.equal(city.zombies, 1);
+    });
 
-  it('does not outbreak the same city twice (infinity loop)', function () {
-    var city = search.city('Kolkata');
-    var crowded = search.city('Bangkok');
-    zombies.infect(crowded, 3);
-    zombies.infect(city, 4);
-    var connections = search.connections(city);
-    assert.deepEqual(connections, [
-      { name: 'Bangkok',
-        color: 'red',
-        connections: [ 'Chennai', 'Ho Chi Mingh City', 'Hong Kong', 'Jakarta', 'Kolkata' ],
-        zombies: 3 },
-      { name: 'Chennai',
-        color: 'black',
-        connections: [ 'Bangkok', 'Delhi', 'Jakarta', 'Kolkata', 'Mumbai' ],
-        zombies: 2 },
-      { name: 'Delhi',
-        color: 'black',
-        connections: [ 'Chennai', 'Karachi', 'Kolkata', 'Mumbai' ],
-        zombies: 1 },
-      { name: 'Hong Kong',
-        color: 'red',
-        connections: [ 'Bangkok', 'Ho Chi Mingh City', 'Kolkata', 'Manila', 'Shangai', 'Taipei' ],
-        zombies: 2 }
-    ]);
-  });
-});
+    it('adds up to 3 zombies to a city', function () {
+      zombies.infect(city, {zombies: 4}, game);
+      assert.equal(city.zombies, 3);
+    });
 
-describe('zombies.kill', function () {
-  it('removes one zombie from a city by default', function () {
-    var city = search.city('New York');
-    zombies.kill(city);
-    assert.equal(city.zombies, 2);
-  });
+    it('emits outbreak event if city would have more than 3 zombies', function () {
+      zombies.infect(city, {zombies: 4}, game);
+      assert(game.e.calledOnce);
+    });
 
-  it('removes up to 3 zombies from a city', function () {
-    var city = search.city('New York');
-    zombies.kill(city, 4);
-    assert.equal(city.zombies, 0);
+    it('does not outbreak the same city twice during the same call', function () {
+      var city = search.city('Kolkata');
+      var crowded = search.city('Bangkok');
+      zombies.infect(crowded, {zombies: 3}, game);
+      zombies.infect(city, {zombies: 4}, game);
+      assert.equal(game.e.withArgs('outbreak', city).callCount, 1);
+    });
+
   })
-});
 
+  describe('.outbreak', function () {
+
+    it('emits infects to all cities connected to a city outbreaking', function () {
+      var city = search.city('Lima');
+      zombies.outbreak(city, {}, game);
+      assert.equal(game.e.callCount, city.connections.length)
+    });
+
+  });
+
+  describe('.kill', function () {
+
+    beforeEach(function () {
+      zombies.infect(city, {zombies: 3}, game);
+    });
+
+    it('removes zombies from a city', function () {
+      zombies.kill(city, 1, game);
+      assert.equal(city.zombies, 2);
+    });
+
+    it('removes up to 3 zombies from a city', function () {
+      zombies.kill(city, 4, game);
+      assert.equal(city.zombies, 0);
+    });
+
+    it('emits the zombieRemoved event to game', function () {
+      zombies.kill(city, 2, game);
+      assert.equal(game.e.callCount, 2);
+    });
+
+  });
+});
