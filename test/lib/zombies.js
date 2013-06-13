@@ -2,8 +2,8 @@ var zombies = require('../../lib/zombies.js');
 var search = require('../../lib/search.js');
 var assert = require('assert');
 
-describe('Infecting a city', function () {
-  it('adds one zombie to the city by default', function () {
+describe('zombies.infect', function () {
+  it('adds one zombie to a city by default', function () {
     var city = search.city('New York');
     zombies.infect(city);
     assert.equal(city.zombies, 1);
@@ -14,25 +14,8 @@ describe('Infecting a city', function () {
     zombies.infect(city, 4);
     assert.equal(city.zombies, 3);
   });
-});
 
-
-describe('Treating a city', function () {
-  it('removes one zombie from the city by default', function () {
-    var city = search.city('New York');
-    zombies.kill(city);
-    assert.equal(city.zombies, 2);
-  });
-
-  it('removes up to 3 zombies from a city', function () {
-    var city = search.city('New York');
-    zombies.kill(city, 4);
-    assert.equal(city.zombies, 0);
-  })
-});
-
-describe('Triggering an outbreak in a city', function () {
-  it('Infect all cities connected to the city outbreaking', function () {
+  it('infects all cities connected to a city outbreaking', function () {
     var city = search.city('Lima');
     var connections = search.connections(city);
     zombies.infect(city, 4);
@@ -51,9 +34,7 @@ describe('Triggering an outbreak in a city', function () {
         zombies: 1 }
     ]);
   });
-});
 
-describe('Channing outbreaks in connected cities', function () {
   it('does not outbreak the same city twice (infinity loop)', function () {
     var city = search.city('Kolkata');
     var crowded = search.city('Bangkok');
@@ -80,3 +61,18 @@ describe('Channing outbreaks in connected cities', function () {
     ]);
   });
 });
+
+describe('zombies.kill', function () {
+  it('removes one zombie from a city by default', function () {
+    var city = search.city('New York');
+    zombies.kill(city);
+    assert.equal(city.zombies, 2);
+  });
+
+  it('removes up to 3 zombies from a city', function () {
+    var city = search.city('New York');
+    zombies.kill(city, 4);
+    assert.equal(city.zombies, 0);
+  })
+});
+

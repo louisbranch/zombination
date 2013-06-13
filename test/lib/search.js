@@ -1,9 +1,9 @@
 var search = require('../../lib/search.js');
 var assert = require('assert');
 
-describe('Finding a city', function () {
+describe('search.city', function () {
+  var city = search.city('Moscow');
   it('returns a city that matches the name given', function () {
-    var city = search.city('Moscow');
     assert.deepEqual(city, {
       name: "Moscow", color: "black",
       connections: [ 'Istanbul', 'St. Petersburg', 'Tehran' ]
@@ -11,8 +11,8 @@ describe('Finding a city', function () {
   });
 });
 
-describe('Finding city connections', function () {
-  it('returns a list of cities', function () {
+describe('search.connections', function () {
+  it('returns a list of connected cities', function () {
     var city = search.city('Moscow');
     var connections = search.connections(city);
     assert.deepEqual(connections, [
@@ -27,6 +27,7 @@ describe('Finding city connections', function () {
         connections: [ 'Baghdad', 'Delhi', 'Karachi', 'Moscow' ] }
     ]);
   });
+
+  it('runs a callback over all connections', function () {
+  });
 });
-
-
