@@ -1,5 +1,6 @@
 var search = require('../../lib/search.js');
 var assert = require('assert');
+var sinon = require('sinon');
 
 describe('search.city', function () {
   var city = search.city('Moscow');
@@ -28,6 +29,10 @@ describe('search.connections', function () {
     ]);
   });
 
-  it('runs a callback over all connections', function () {
+  it('runs an optional callback over all connected cities', function () {
+    var callback = sinon.spy();
+    var city = search.city('Moscow');
+    var connections = search.connections(city, callback);
+    assert.equal(callback.callCount, 3);
   });
 });
