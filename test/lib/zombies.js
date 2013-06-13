@@ -44,7 +44,7 @@ describe('zombies', function () {
 
   describe('.outbreak', function () {
 
-    it('emits infects to all cities connected to a city outbreaking', function () {
+    it('emits infect event with all cities connected to a city outbreaking', function () {
       var city = search.city('Lima');
       zombies.outbreak(city, {}, game);
       assert.equal(game.e.callCount, city.connections.length)
@@ -68,7 +68,7 @@ describe('zombies', function () {
       assert.equal(city.zombies, 0);
     });
 
-    it('emits the zombieRemoved event to game', function () {
+    it('emits zombieRemoved event', function () {
       zombies.kill(city, 2, game);
       assert.equal(game.e.callCount, 2);
     });
