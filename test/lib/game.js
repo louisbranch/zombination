@@ -5,11 +5,21 @@ var zombies = require('../../lib/zombies.js');
 var sinon = require('sinon');
 
 describe('Game.new', function () {
+  var game;
 
-  var game = new Game();
+  beforeEach(function () {
+    game = new Game();
+  });
 
   it('returns a new game', function () {
     assert(game instanceof Game);
+  });
+
+  describe('.map', function () {
+    it('has 48 cities', function () {
+      var cities = Object.keys(game.map);
+      assert.equal(cities.length, 48);
+    });
   });
 
   describe('._events', function () {
