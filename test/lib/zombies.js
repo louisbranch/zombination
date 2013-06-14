@@ -1,18 +1,13 @@
 var assert = require('assert');
 var sinon = require('sinon');
-
 var zombies = require('../../lib/zombies.js');
-var search = require('../../lib/search.js');
-var Game = require('../../lib/game.js');
-
-var city, game;
 
 describe('zombies', function () {
+  var city, game;
 
   beforeEach(function () {
-    game = new Game();
-    sinon.spy(game, 'e');
-    city = {zombies: 0, connections: []};
+    game = {e: sinon.spy()};
+    city = {name: 'Fake City', zombies: 0, connections: []};
   });
 
   describe('.infect', function () {
@@ -33,9 +28,8 @@ describe('zombies', function () {
     });
 
     it('does not outbreak the same city twice during the same call', function () {
-      var city = search.city('Kolkata');
-      var crowded = search.city('Bangkok');
-      zombies.infect(crowded, {zombies: 3}, game);
+      var crowded = {name: 'crowded', zombies: 3, connections: [city]};
+      city.connections = [crowded];
       zombies.infect(city, {zombies: 4}, game);
       assert.equal(game.e.withArgs('outbreak', city).callCount, 1);
     });
@@ -45,7 +39,7 @@ describe('zombies', function () {
   describe('.outbreak', function () {
 
     it('emits infect event with all cities connected to a city outbreaking', function () {
-      var city = search.city('Lima');
+      city.connections = [{zombies: 0}, {zombies: 0}, {zombies: 0}];
       zombies.outbreak(city, {}, game);
       assert.equal(game.e.callCount, city.connections.length)
     });
