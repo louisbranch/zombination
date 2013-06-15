@@ -1,9 +1,9 @@
 var assert = require('assert');
-var cities = require('../../lib/cities.js');;
+var Map = require('../../lib/map.js');;
 
-describe('cities', function () {
+describe('Map', function () {
 
-  describe('.new Map', function () {
+  describe('.new', function () {
     var map;
 
     beforeEach(function () {
@@ -14,7 +14,7 @@ describe('cities', function () {
           {"City1":"City2"}
         ]
       }
-      map = new cities.Map(json, true);
+      map = new Map(json, true);
     });
 
     it('generates a list of cities', function () {
