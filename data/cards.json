@@ -1,0 +1,34 @@
+{
+  "events": [
+    {
+      "name": "One Quite Night",
+      "group": "events",
+      "description": "FIXME"
+    },
+    {
+      "name": "Place a HQ",
+      "group": "events",
+      "description": "FIXME"
+    },
+    {
+      "name": "Resilient Population",
+      "group": "events",
+      "description": "FIXME"
+    },
+    {
+      "name": "Airlift",
+      "group": "events",
+      "description": "FIXME"
+    },
+    {
+      "name": "Forecast",
+      "group": "events",
+      "description": "FIXME"
+    }
+  ],
+  "epidemics": {
+    "name": "Epidemic",
+    "group": "epidemics",
+    "description": "FIXME"
+  }
+}
