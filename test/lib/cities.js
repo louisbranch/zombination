@@ -14,7 +14,7 @@ describe('cities', function () {
           {"City1":"City2"}
         ]
       }
-      map = new cities.Map(json);
+      map = new cities.Map(json, true);
     });
 
     it('generates a list of cities', function () {
