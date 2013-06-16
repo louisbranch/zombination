@@ -1,7 +1,6 @@
 var assert = require('assert');
 var Game = require('../../lib/game.js');
 var EventEmitter = require('events').EventEmitter;
-var zombies = require('../../lib/zombies.js');
 var sinon = require('sinon');
 
 describe('Game.new', function () {
@@ -22,25 +21,15 @@ describe('Game.new', function () {
     });
   });
 
-  describe('._events', function () {
+  describe('._emitter', function () {
 
     it('is an Event Emitter', function () {
-      assert(game._events instanceof EventEmitter);
-    })
-
-    it('binds to infect event', function () {
-      var listeners = game._events.listeners('infect');
-      assert.deepEqual(listeners, [zombies.infect]);
+      assert(game._emitter instanceof EventEmitter);
     });
 
-    it('binds to kill event', function () {
-      var listeners = game._events.listeners('kill');
-      assert.deepEqual(listeners, [zombies.kill]);
-    });
-
-    it('binds to outbreak event', function () {
-      var listeners = game._events.listeners('outbreak');
-      assert.deepEqual(listeners, [zombies.outbreak]);
+    it('has events bound to it', function () {
+      var bound = Object.keys(game._emitter._events);
+      assert(bound.length > 0);
     });
 
   });
@@ -48,7 +37,7 @@ describe('Game.new', function () {
   describe('.e', function () {
     it('emits an event shovelling game to callback', function () {
       var spy = sinon.spy();
-      game._events.on('test', spy);
+      game._emitter.on('test', spy);
       game.e('test', 1, 2);
       assert(spy.calledWith(1, 2, game));
     });
