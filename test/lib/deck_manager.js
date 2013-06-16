@@ -3,7 +3,7 @@ var sinon = require('sinon');
 var manager = require('../../lib/deck_manager.js');
 
 describe('deck_manager', function () {
-  var game, deck, hand, card, pile, length;
+  var game, card, deck = [], hand = [], pile = [], length;
 
   var Card = function () {};
 
@@ -12,12 +12,19 @@ describe('deck_manager', function () {
     card = new Card();
   });
 
+  describe('.add', function() {
+    it('adds a card to a list', function() {
+      var list = [];
+      manager.add(list, card);
+      assert.equal(list[0], card);
+    });
+  });
+
   describe('.draw', function () {
 
     beforeEach(function () {
       deck = [new Card(), card];
       length = deck.length;
-      hand = [];
       manager.draw(deck, hand, game);
     });
 
@@ -25,8 +32,8 @@ describe('deck_manager', function () {
       assert.equal(deck.length, length - 1);
     });
 
-    it('adds card to hand', function () {
-      assert.equal(hand[0], card);
+    it('emits addCard event', function () {
+      assert(game.e.calledWith('addCard'), hand, card);
     });
 
   });
@@ -36,7 +43,6 @@ describe('deck_manager', function () {
     beforeEach(function () {
       hand = [card];
       length = hand.length;
-      pile = [];
       manager.discard(hand, card, pile, game);
     });
 
@@ -44,8 +50,8 @@ describe('deck_manager', function () {
       assert.equal(hand.length, length - 1);
     });
 
-    it('adds card to discard pile', function () {
-      assert.equal(pile[0], card);
+    it('emits addCard event', function () {
+      assert(game.e.calledWith('addCard'), pile, card);
     });
 
   });
