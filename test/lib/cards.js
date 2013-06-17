@@ -1,8 +1,8 @@
 var assert = require('assert');
 var sinon = require('sinon');
-var manager = require('../../lib/deck_manager.js');
+var cards = require('../../lib/cards.js');
 
-describe('deck_manager', function () {
+describe('cards', function () {
   var game, card, deck = [], hand = [], pile = [], length;
 
   var Card = function () {};
@@ -15,7 +15,7 @@ describe('deck_manager', function () {
   describe('.add', function() {
     it('adds a card to a list', function() {
       var list = [];
-      manager.add(list, card);
+      cards.add(list, card);
       assert.equal(list[0], card);
     });
   });
@@ -25,7 +25,7 @@ describe('deck_manager', function () {
     beforeEach(function () {
       deck = [new Card(), card];
       length = deck.length;
-      manager.draw(deck, hand, game);
+      cards.draw(deck, hand, game);
     });
 
     it('removes card from the top of the deck', function () {
@@ -43,7 +43,7 @@ describe('deck_manager', function () {
     beforeEach(function () {
       hand = [card];
       length = hand.length;
-      manager.discard(hand, card, pile, game);
+      cards.discard(hand, card, pile, game);
     });
 
     it('removes card from hand', function () {
