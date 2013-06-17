@@ -3,12 +3,22 @@ var sinon = require('sinon');
 var cards = require('../../lib/cards.js');
 
 describe('cards', function () {
-  var game, card, deck = [], hand = [], pile = [], length;
+  var game, card, hand;
 
   var Card = function () {};
 
   beforeEach(function () {
-    game = {e: sinon.spy()};
+    game = {
+      e: sinon.spy(),
+      decks: {
+        players: [],
+        zombies: []
+      },
+      piles: {
+        players: [],
+        zombies: []
+      }
+    };
     card = new Card();
   });
 
@@ -23,17 +33,17 @@ describe('cards', function () {
   describe('.draw', function () {
 
     beforeEach(function () {
-      deck = [new Card(), card];
-      length = deck.length;
-      cards.draw(deck, hand, game);
+      hand = [];
+      game.decks.players = [new Card(), card];
+      cards.draw(hand, game);
     });
 
     it('removes card from the top of the deck', function () {
-      assert.equal(deck.length, length - 1);
+      assert.equal(game.decks.players.length, 1);
     });
 
     it('emits addCard event', function () {
-      assert(game.e.calledWith('addCard'), hand, card);
+      assert(game.e.calledWith('addCard', hand, card));
     });
 
   });
@@ -42,19 +52,41 @@ describe('cards', function () {
 
     beforeEach(function () {
       hand = [card];
-      length = hand.length;
-      cards.discard(hand, card, pile, game);
+      cards.discard(hand, card, game);
     });
 
     it('removes card from hand', function () {
-      assert.equal(hand.length, length - 1);
+      assert.equal(hand.length, 0);
     });
 
     it('emits addCard event', function () {
-      assert(game.e.calledWith('addCard'), pile, card);
+      assert(game.e.calledWith('addCard', game.piles.players, card));
+    });
+
+  });
+
+  describe('.reveal', function(){
+
+    beforeEach(function(){
+      card = {name: 'New York'};
+      game.decks.zombies = [card];
+      city = {};
+      game.map = {'New York': city};
+      cards.reveal(1, game);
+    });
+
+    it('removes n cards from the top of the zombies deck', function(){
+      assert.equal(game.decks.zombies.length, 0);
+    });
+
+    it('emits infect event with the city revealed', function(){
+      assert(game.e.calledWith('infect', city));
+    });
+
+    it('emits addCard event for zombies discard pile', function(){
+      assert(game.e.calledWith('addCard', game.piles.zombies));
     });
 
   });
 
 });
-
