@@ -6,17 +6,25 @@
   "scripts": {
     "test": "mocha --recursive"
   },
-  "repository": "",
-  "author": "Luiz Branco <me@luizbranco.com>",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/luizbranco/zombination"
+  },
+  "author": {
+    "name": "Luiz Branco",
+    "email": "me@luizbranco.com",
+    "url": "http://github.com/luizbranco"
+  },
   "license": "MIT",
   "dependencies": {
+    "lodash": "~1.3.1"
+  },
+  "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-cli": "~0.1.9",
     "grunt-regarde": "~0.1.1",
     "grunt-exec": "~0.4.1",
     "grunt-contrib-watch": "~0.4.4",
-    "browserify": "~2.18.0",
-    "sinon": "~1.7.2",
-    "lodash": "~1.3.1"
+    "sinon": "~1.7.2"
   }
 }
