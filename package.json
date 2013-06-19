@@ -25,6 +25,7 @@
     "grunt-regarde": "~0.1.1",
     "grunt-exec": "~0.4.1",
     "grunt-contrib-watch": "~0.4.4",
-    "sinon": "~1.7.2"
+    "sinon": "~1.7.2",
+    "mocha": "~1.10.0"
   }
 }
