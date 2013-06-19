@@ -2,15 +2,18 @@ var assert = require('assert');
 var PlayerDeck = require('../../models/player_deck.js');
 var _ = require('lodash');
 
-describe('Players', function () {
+describe('PlayerDeck', function () {
+  var deck;
+
+  beforeEach(function(){
+    deck = new PlayerDeck();
+  });
 
   it('creates player card for each city plus special cards', function () {
-    var deck = new PlayerDeck();
     assert.equal(deck.length, 58);
   })
 
   it('has a total of 5 event cards', function () {
-    var deck = new PlayerDeck();
     var events = _.filter(deck, function (card) {
       return card.group === 'events';
     });
@@ -18,7 +21,7 @@ describe('Players', function () {
   });
 
   it('has a customizable difficulty level', function () {
-    var deck = new PlayerDeck('hard');
+    deck = new PlayerDeck('hard');
     var events = _.filter(deck, function (card) {
       return card.group === 'epidemics';
     });
@@ -26,16 +29,15 @@ describe('Players', function () {
   });
 
   it('shuffles the cards each time', function () {
-    var deck1 = new PlayerDeck();
     var deck2 = new PlayerDeck();
-    assert.notDeepEqual(deck1, deck2);
+    assert.notDeepEqual(deck, deck2);
   });
 
   describe('cards', function () {
     var card;
 
     beforeEach(function () {
-      card = new PlayerDeck()[0];
+      card = deck[0];
     });
 
     it('has a name', function () {
@@ -49,7 +51,7 @@ describe('Players', function () {
     describe('event cards', function () {
 
       beforeEach(function () {
-        card = _.find(new PlayerDeck(), function (card) {
+        card = _.find(deck, function (card) {
           return card.group === 'events';
         });
       });
@@ -58,8 +60,5 @@ describe('Players', function () {
         assert(card.description);
       });
     });
-
   });
-
 });
-

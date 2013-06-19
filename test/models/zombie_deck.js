@@ -1,24 +1,27 @@
 var assert = require('assert');
 var ZombieDeck = require('../../models/zombie_deck.js');
 
-describe('Zombies', function () {
+describe('ZombieDeck', function () {
+  var deck;
+
+  beforeEach(function(){
+    deck = new ZombieDeck();
+  });
 
   it('creates a zombie card for each city', function () {
-    var deck = new ZombieDeck();
     assert.equal(deck.length, 48);
   });
 
   it('shuffles the cards each time', function () {
-    var deck1 = new ZombieDeck();
     var deck2 = new ZombieDeck();
-    assert.notDeepEqual(deck1, deck2);
+    assert.notDeepEqual(deck, deck2);
   });
 
   describe('cards', function () {
     var card;
 
     beforeEach(function () {
-      card = new ZombieDeck()[0];
+      card = deck[0];
     });
 
     it('has a name', function () {
