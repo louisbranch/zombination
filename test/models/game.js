@@ -1,5 +1,5 @@
 var assert = require('assert');
-var Game = require('../../lib/game.js');
+var Game = require('../../models/game.js');
 var EventEmitter = require('events').EventEmitter;
 var sinon = require('sinon');
 

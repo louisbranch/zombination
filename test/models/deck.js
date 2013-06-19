@@ -1,19 +1,19 @@
 var assert = require('assert');
-var decks = require('../../lib/decks.js');
+var decks = require('../../models/deck.js');
 var _ = require('lodash');
 
 describe('decks', function () {
 
-  describe('.zombies', function () {
+  describe('Zombies', function () {
 
     it('creates a zombie card for each city', function () {
-      var deck = decks.zombies();
+      var deck = new decks.Zombies();
       assert.equal(deck.length, 48);
     });
 
     it('shuffles the cards each time', function () {
-      var deck1 = decks.zombies();
-      var deck2 = decks.zombies();
+      var deck1 = new decks.Zombies();
+      var deck2 = new decks.Zombies();
       assert.notDeepEqual(deck1, deck2);
     });
 
@@ -21,7 +21,7 @@ describe('decks', function () {
       var card;
 
       beforeEach(function () {
-        card = decks.zombies()[0];
+        card = new decks.Zombies()[0];
       });
 
       it('has a name', function () {
@@ -36,15 +36,15 @@ describe('decks', function () {
 
   });
 
-  describe('.players', function () {
+  describe('Players', function () {
 
     it('creates player card for each city plus special cards', function () {
-      var deck = decks.players();
+      var deck = new decks.Players();
       assert.equal(deck.length, 58);
     })
 
     it('has a total of 5 event cards', function () {
-      var deck = decks.players();
+      var deck = new decks.Players();
       var events = _.filter(deck, function (card) {
         return card.group === 'events';
       });
@@ -52,7 +52,7 @@ describe('decks', function () {
     });
 
     it('has a customizable difficulty level', function () {
-      var deck = decks.players('hard');
+      var deck = new decks.Players('hard');
       var events = _.filter(deck, function (card) {
         return card.group === 'epidemics';
       });
@@ -60,8 +60,8 @@ describe('decks', function () {
     });
 
     it('shuffles the cards each time', function () {
-      var deck1 = decks.players();
-      var deck2 = decks.players();
+      var deck1 = new decks.Players();
+      var deck2 = new decks.Players();
       assert.notDeepEqual(deck1, deck2);
     });
 
@@ -69,7 +69,7 @@ describe('decks', function () {
       var card;
 
       beforeEach(function () {
-        card = decks.players()[0];
+        card = new decks.Players()[0];
       });
 
       it('has a name', function () {
@@ -83,7 +83,7 @@ describe('decks', function () {
       describe('event cards', function () {
 
         beforeEach(function () {
-          card = _.find(decks.players(), function (card) {
+          card = _.find(new decks.Players(), function (card) {
             return card.group === 'events';
           });
         });

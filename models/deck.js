@@ -9,18 +9,18 @@ var DIFFICULTY_LEVELS = {
 };
 
 module.exports = {
-  players: players,
-  zombies: zombies
+  Players: Players,
+  Zombies: Zombies
 };
 
-function players (difficulty) {
+function Players (difficulty) {
   var deck = formatDeck();
   epidemics = setDifficulty(difficulty);
   deck = deck.concat(cards.events, epidemics);
   return _.shuffle(deck);
 }
 
-function zombies () {
+function Zombies () {
   return _.shuffle(formatDeck());
 }
 

@@ -1,5 +1,5 @@
 var assert = require('assert');
-var Map = require('../../lib/map.js');;
+var Map = require('../../models/map.js');;
 
 describe('Map', function () {
 

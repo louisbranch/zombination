@@ -1,7 +1,7 @@
 var EventEmitter = require('events').EventEmitter;
 var Map = require('./map.js');
-var events = require('./events.js');
-var decks = require('./decks.js');
+var decks = require('../models/deck.js');
+var events = require('../lib/events.js');
 
 module.exports = Game;
 
@@ -11,8 +11,8 @@ function Game () {
   events.bindTo(this._emitter);
   this.map = new Map();
   this.decks = {
-    zombies: decks.zombies(),
-    players: decks.players()
+    zombies: new decks.Zombies(),
+    players: new decks.Players()
   };
   this.piles = {
     zombies: [],
