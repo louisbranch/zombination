@@ -1,6 +1,8 @@
 var _ = require('lodash');
-var json = require('../data/map.json');
+var format = require('../lib/deck_formater.js')
 var cards = require('../data/cards.json');
+
+module.exports = PlayerDeck;
 
 var DIFFICULTY_LEVELS = {
   easy: 4,
@@ -8,29 +10,11 @@ var DIFFICULTY_LEVELS = {
   hard: 6
 };
 
-module.exports = {
-  Players: Players,
-  Zombies: Zombies
-};
-
-function Players (difficulty) {
-  var deck = formatDeck();
+function PlayerDeck (difficulty) {
+  var deck = format.deck();
   epidemics = setDifficulty(difficulty);
   deck = deck.concat(cards.events, epidemics);
   return _.shuffle(deck);
-}
-
-function Zombies () {
-  return _.shuffle(formatDeck());
-}
-
-function formatDeck () {
-  return _.map(json.nodes, function (attrs, name) {
-    return {
-      name: name,
-      group: attrs.group
-    };
-  });
 }
 
 function setDifficulty (difficulty) {
