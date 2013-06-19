@@ -21,6 +21,26 @@ describe('Game.new', function () {
     });
   });
 
+  describe('.decks', function(){
+
+    it('has a full zombies deck', function(){
+      assert.equal(game.decks.zombies.length, 48);
+    });
+
+    it('has an empty zombies discard pile', function(){
+      assert.equal(game.piles.zombies.length, 0);
+    });
+
+    it('has a full players deck', function(){
+      assert.equal(game.decks.players.length, 58);
+    });
+
+    it('has an empty players discard pile', function(){
+      assert.equal(game.piles.players.length, 0);
+    });
+
+  });
+
   describe('._emitter', function () {
 
     it('is an Event Emitter', function () {
