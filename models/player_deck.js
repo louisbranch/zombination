@@ -1,5 +1,5 @@
 var _ = require('lodash');
-var format = require('../lib/deck_formater.js')
+var deckFormater = require('../lib/deck_formater.js')
 var cards = require('../data/cards.json');
 
 module.exports = PlayerDeck;
@@ -11,7 +11,7 @@ var DIFFICULTY_LEVELS = {
 };
 
 function PlayerDeck (difficulty) {
-  var deck = format.deck();
+  var deck = deckFormater();
   epidemics = setDifficulty(difficulty);
   deck = deck.concat(cards.events, epidemics);
   return _.shuffle(deck);
