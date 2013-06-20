@@ -14,11 +14,13 @@ describe('Game.new', function () {
     assert(game instanceof Game);
   });
 
-  describe('.map', function () {
-    it('has 48 cities', function () {
-      var cities = Object.keys(game.map);
-      assert.equal(cities.length, 48);
-    });
+  it('has the maximum number of players', function(){
+    assert.equal(game.maxPlayers, 5);
+  });
+
+  it('has a map with 48 cities', function () {
+    var cities = Object.keys(game.map);
+    assert.equal(cities.length, 48);
   });
 
   describe('.decks', function(){
