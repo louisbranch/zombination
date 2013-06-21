@@ -24,7 +24,10 @@ var DEFAULTS = function () {
   };
 };
 
-/* Game constructor */
+/*
+ * Game constructor extend options
+ * or use defaults values
+ */
 function Game (options) {
   _.extend(this, DEFAULTS(), options);
   events.bindTo(this._emitter);
