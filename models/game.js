@@ -7,14 +7,12 @@ var events = require('../lib/events.js');
 
 module.exports = Game;
 
-/* Game constructor */
-function Game (options) {
-  options = options || {};
-
-  _.defaults(options, {
-    maxPlayers: 5,
+var DEFAULTS = function () {
+  return {
     _emitter: new EventEmitter(),
     map: new Map(),
+    maxPlayers: 5,
+    players: [],
     decks: {
       zombies: new ZombieDeck(),
       players: new PlayerDeck()
@@ -23,15 +21,18 @@ function Game (options) {
       zombies: [],
       players: []
     }
-  });
+  };
+};
 
-  _.extend(this, options);
+/* Game constructor */
+function Game (options) {
+  _.extend(this, DEFAULTS(), options);
   events.bindTo(this._emitter);
 }
 
 /* Alias for game._emitter.emit */
 Game.prototype.e = function () {
-  var args = [].slice.call(arguments);
+  var args = _.toArray(arguments);
   //TODO call async db log
   args.push(this);
   return this._emitter.emit.apply(this._emitter, args);
