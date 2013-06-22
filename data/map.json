@@ -13,7 +13,7 @@
   "Johannesburg": { "group": 2 },
   "San Francisco": { "group": 2 },
   "Chicago": { "group": 2 },
-  "Atlanta": { "group": 2 },
+  "Atlanta": { "group": 2, "start": true },
   "Montreal": { "group": 2 },
   "Washington": { "group": 2 },
   "New York": { "group": 2 },

@@ -11,7 +11,7 @@ module.exports = function(grunt) {
     },
     exec: {
       test: {
-        cmd: 'mocha --recursive --colors --growl'
+        cmd: 'mocha --recursive --colors --growl --reporter min'
       }
     }
   });

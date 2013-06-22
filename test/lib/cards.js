@@ -95,7 +95,7 @@ describe('cards', function () {
       it('emits 4 draw events for each player', function(){
         game.players = [{}, {}];
         cards.initialHand(game);
-        assert.equal(game.e.callCount, 8);
+        assert.equal(game.e.withArgs('draw').callCount, 8);
       });
     });
 
@@ -103,7 +103,7 @@ describe('cards', function () {
       it('emits 3 draw events for each player', function(){
         game.players = [{}, {}, {}];
         cards.initialHand(game);
-        assert.equal(game.e.callCount, 9);
+        assert.equal(game.e.withArgs('draw').callCount, 9);
       });
     });
 
@@ -111,7 +111,7 @@ describe('cards', function () {
       it('emits 2 draw events for each player', function(){
         game.players = [{}, {}, {}, {}];
         cards.initialHand(game);
-        assert.equal(game.e.callCount, 8);
+        assert.equal(game.e.withArgs('draw').callCount, 8);
       });
     });
 
@@ -119,7 +119,7 @@ describe('cards', function () {
       it('emits 2 draw events for each player', function(){
         game.players = [{}, {}, {}, {}, {}];
         cards.initialHand(game);
-        assert.equal(game.e.callCount, 10);
+        assert.equal(game.e.withArgs('draw').callCount, 10);
       });
     });
 

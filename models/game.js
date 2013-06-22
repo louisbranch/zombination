@@ -34,7 +34,11 @@ function Game (options) {
   events.bindTo(this._emitter);
 }
 
-/* Alias for game._emitter.emit */
+/*
+ * Alias for game._emitter.emit
+ * shovelling game as the last callback
+ * argument
+ */
 Game.prototype.e = function () {
   var args = _.toArray(arguments);
   //TODO call async db log
