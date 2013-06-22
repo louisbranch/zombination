@@ -1,25 +1,15 @@
 var assert = require('assert');
 var sinon = require('sinon');
 var cards = require('../../lib/cards.js');
+var Game = require('../../models/game.js');
 
 describe('cards', function () {
   var game, card, hand;
 
-  var Card = function () {};
-
   beforeEach(function () {
-    game = {
-      e: sinon.spy(),
-      decks: {
-        players: [],
-        zombies: []
-      },
-      piles: {
-        players: [],
-        zombies: []
-      }
-    };
-    card = new Card();
+    game = new Game();
+    game.e = sinon.spy();
+    card = {};
   });
 
   describe('.add', function() {
@@ -34,7 +24,7 @@ describe('cards', function () {
 
     beforeEach(function () {
       hand = [];
-      game.decks.players = [new Card(), card];
+      game.decks.players = [{}, card];
       cards.draw(hand, game);
     });
 
@@ -68,14 +58,15 @@ describe('cards', function () {
   describe('.reveal', function(){
 
     beforeEach(function(){
-      card = {name: 'New York'};
-      game.decks.zombies = [card];
+      var card1 = {name: 'New York'};
+      var card2 = {name: 'Bagda'};
+      game.decks.zombies = [card1, card2];
       city = {};
       game.map = {'New York': city};
-      cards.reveal(1, game);
+      cards.reveal(game);
     });
 
-    it('removes n cards from the top of the zombies deck', function(){
+    it('removes cards equals to game infection rate from the top of the zombies deck', function(){
       assert.equal(game.decks.zombies.length, 0);
     });
 
@@ -124,5 +115,4 @@ describe('cards', function () {
     });
 
   });
-
 });
