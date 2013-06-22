@@ -5,7 +5,8 @@ module.exports = Player;
 var DEFAULTS = function () {
   return {
     hand: [],
-    actions: 4
+    actions: 4,
+    role: null
   };
 };
 
@@ -15,4 +16,8 @@ var DEFAULTS = function () {
  */
 function Player (options) {
   _.extend(this, DEFAULTS(), options);
+}
+
+Player.prototype.toString = function () {
+  return this.name + ' [' + this.role + ']';
 }

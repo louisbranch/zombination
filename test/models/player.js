@@ -12,4 +12,11 @@ describe('Player', function(){
     assert.equal(player.hand.length, 0);
   });
 
+  describe('.toString', function(){
+    it('outputs player name and role', function(){
+      player = new Player({name: 'Luiz', role: 'Medic'});
+      assert.equal(player.toString(), 'Luiz [Medic]');
+    });
+  });
+
 });
