@@ -4,7 +4,7 @@
   "description": "Kill zombies and cure the diseases for zombies outbreak",
   "main": "server.js",
   "scripts": {
-    "test": "mocha --recursive"
+    "test": "mocha --recursive --reporter min"
   },
   "repository": {
     "type": "git",
