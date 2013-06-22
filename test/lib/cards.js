@@ -89,4 +89,40 @@ describe('cards', function () {
 
   });
 
+  describe('.initialHand', function(){
+
+    describe('when there are 2 players', function(){
+      it('emits 4 draw events for each player', function(){
+        game.players = [{}, {}];
+        cards.initialHand(game);
+        assert.equal(game.e.callCount, 8);
+      });
+    });
+
+    describe('when there are 3 players', function(){
+      it('emits 3 draw events for each player', function(){
+        game.players = [{}, {}, {}];
+        cards.initialHand(game);
+        assert.equal(game.e.callCount, 9);
+      });
+    });
+
+    describe('when there are 4 players', function(){
+      it('emits 2 draw events for each player', function(){
+        game.players = [{}, {}, {}, {}];
+        cards.initialHand(game);
+        assert.equal(game.e.callCount, 8);
+      });
+    });
+
+    describe('when there are 5 players', function(){
+      it('emits 2 draw events for each player', function(){
+        game.players = [{}, {}, {}, {}, {}];
+        cards.initialHand(game);
+        assert.equal(game.e.callCount, 10);
+      });
+    });
+
+  });
+
 });

@@ -11,6 +11,7 @@ var DEFAULTS = function () {
   return {
     _emitter: new EventEmitter(),
     map: new Map(),
+    minPlayers: 2,
     maxPlayers: 5,
     players: [],
     decks: {
