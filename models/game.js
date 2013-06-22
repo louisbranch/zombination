@@ -10,19 +10,25 @@ module.exports = Game;
 var DEFAULTS = function () {
   return {
     _emitter: new EventEmitter(),
-    map: new Map(),
-    infectionRate: 2,
-    minPlayers: 2,
-    maxPlayers: 5,
-    players: [],
     decks: {
       zombies: new ZombieDeck(),
       players: new PlayerDeck()
     },
+    infectionRate: 2,
+    infectionProgress: [2,2,2,3,3,4,4],
+    minPlayers: 2,
+    map: new Map(),
+    maxHQs: 8, // ???
+    maxOutbreaks: 8,
+    maxPlayers: 5,
+    outbreaks: 0,
     piles: {
       zombies: [],
       players: []
-    }
+    },
+    players: [],
+    playersOrder: [],
+    zombiesPerGroup: 24
   };
 };
 
