@@ -4,7 +4,7 @@ var cities = require('../../lib/cities.js');
 var Game = require('../../models/game.js');
 
 describe('cities', function(){
-  var game, player;
+  var game, player, city;
 
   beforeEach(function(){
     game = new Game();
@@ -28,17 +28,80 @@ describe('cities', function(){
   });
 
   describe('.fly', function(){
-    it('moves a player to any city in the map', function(){
-      var city = 'New York'
-      cities.fly(player, city, game);
-      assert.equal(player.position, city);
-    });
 
-    it('throws error when city doesnt exist', function(){
-      assert.throws(function() {
-        cities.fly(player, 'Gotham City', game);
+    describe('when city exists', function(){
+
+      beforeEach(function(){
+        city = 'New York'
+        cities.fly(player, city, game);
+      });
+
+      it('moves a player to any city in the map', function(){
+        assert.equal(player.position, city);
+      });
+
+      it('emits enterCity event', function(){
+        assert(game.e.calledWith('enterCity', player, city));
       });
     });
+
+    describe('when city doesnt exist', function(){
+      it('throws error', function(){
+        assert.throws(function() {
+          cities.fly(player, 'Gotham City', game);
+        });
+      });
+    });
+
+  });
+
+  describe('.walk', function(){
+
+    describe('when player doesnt have an origin city', function(){
+      it('throws error', function(){
+        city = 'New York';
+        assert.throws(function() {
+          cities.walk(player, city, game);
+        });
+      });
+    });
+
+    describe('when city doesnt exist', function(){
+      it('throws error', function(){
+        assert.throws(function() {
+          cities.walk(player, 'Gotham City', game);
+        });
+      });
+    });
+
+    describe('when city is connected to origin', function(){
+      beforeEach(function(){
+        player.position = 'Washington';
+        city = 'New York';
+        cities.walk(player, city, game);
+      });
+
+      it('emits enterCity event', function(){
+        assert(game.e.calledWith('enterCity', player, city));
+      });
+
+      it('moves player to the destinantion', function(){
+        assert.equal(player.position, city);
+      });
+    });
+
+    describe('when city is not connected to origin', function(){
+
+      it('throws error', function(){
+        city = 'New York';
+        player.position = 'Bagda';
+        assert.throws(function() {
+          cities.walk(player, city, game);
+        });
+      });
+
+    });
+
   });
 
 });
