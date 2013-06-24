@@ -34,7 +34,7 @@ describe('Game.new', function () {
     });
 
     it('has a full players deck', function(){
-      assert.equal(game.decks.players.length, 58);
+      assert.equal(game.decks.players.length, 53);
     });
 
     it('has an empty players discard pile', function(){

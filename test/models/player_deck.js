@@ -9,8 +9,8 @@ describe('PlayerDeck', function () {
     deck = new PlayerDeck();
   });
 
-  it('creates player card for each city plus special cards', function () {
-    assert.equal(deck.length, 58);
+  it('creates player card for each city plus events cards', function () {
+    assert.equal(deck.length, 53);
   })
 
   it('has a total of 5 event cards', function () {
@@ -18,14 +18,6 @@ describe('PlayerDeck', function () {
       return card.group === 'events';
     });
     assert.equal(events.length, 5);
-  });
-
-  it('has a customizable difficulty level', function () {
-    deck = new PlayerDeck('hard');
-    var events = _.filter(deck, function (card) {
-      return card.group === 'epidemics';
-    });
-    assert.equal(events.length, 6);
   });
 
   it('shuffles the cards each time', function () {

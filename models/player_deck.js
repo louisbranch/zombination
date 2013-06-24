@@ -4,26 +4,9 @@ var cards = require('../data/cards.json');
 
 module.exports = PlayerDeck;
 
-var DIFFICULTY_LEVELS = {
-  easy: 4,
-  normal: 5,
-  hard: 6
-};
-
-function PlayerDeck (difficulty) {
+function PlayerDeck () {
   var deck = deckFormater();
-  epidemics = setDifficulty(difficulty);
-  deck = deck.concat(cards.events, epidemics);
+  deck = deck.concat(cards.events);
   return _.shuffle(deck);
 }
 
-function setDifficulty (difficulty) {
-  difficulty = difficulty || 'normal';
-  level = DIFFICULTY_LEVELS[difficulty];
-  var card = cards.epidemics;
-  var epidemics = [];
-  _.times(level, function () {
-    epidemics.push(card);
-  });
-  return epidemics;
-}

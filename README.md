@@ -8,7 +8,6 @@ Online version of the Pandemic Board Game, if you like this, please support and 
 
 ### Core
 
-* Change zombies mechanics to work with zombies groups
 * Watch for ending conditions: max outbreaks, out of cards, out of zombies
 * List and bind all events to proper actions
 * Setup a initial game turn

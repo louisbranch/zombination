@@ -14,8 +14,14 @@ var DEFAULTS = function () {
       zombies: new ZombieDeck(),
       players: new PlayerDeck()
     },
+    difficulty: 'normal',
     infectionProgress: [2,2,2,3,3,4,4],
     infectionRateIndex: 0,
+    epidemicCardsPerLevel: {
+      easy: 4,
+      normal: 5,
+      hard: 6
+    },
     minPlayers: 2,
     map: new Map(),
     maxHQs: 8, // ???

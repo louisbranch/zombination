@@ -4,8 +4,10 @@ module.exports = Player;
 
 var DEFAULTS = function () {
   return {
+    actions: 0,
     hand: [],
-    actions: 4,
+    maxActions: 4,
+    maxHand: 7,
     role: null
   };
 };
