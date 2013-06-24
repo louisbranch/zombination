@@ -14,9 +14,9 @@ describe('cities', function(){
   });
 
   describe('.startPosition', function(){
-    it('emits fly event to all players with starting city', function(){
+    it('emits cities:fly event to all players with starting city', function(){
       cities.startPosition(game);
-      assert(game.e.calledWith('fly', player, 'Atlanta'));
+      assert(game.e.calledWith('cities:fly', player, 'Atlanta'));
     });
 
     it('throws error when starting city doesnt exist', function(){
@@ -40,8 +40,8 @@ describe('cities', function(){
         assert.equal(player.position, city);
       });
 
-      it('emits enterCity event', function(){
-        assert(game.e.calledWith('enterCity', player, city));
+      it('emits cities:enter event', function(){
+        assert(game.e.calledWith('cities:enter', player, city));
       });
     });
 
@@ -81,8 +81,8 @@ describe('cities', function(){
         cities.walk(player, city, game);
       });
 
-      it('emits enterCity event', function(){
-        assert(game.e.calledWith('enterCity', player, city));
+      it('emits cities:enter event', function(){
+        assert(game.e.calledWith('cities:enter', player, city));
       });
 
       it('moves player to the destinantion', function(){

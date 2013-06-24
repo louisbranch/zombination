@@ -24,14 +24,14 @@ describe('zombies', function () {
 
     it('emits outbreak event if city would have more than 3 zombies', function () {
       zombies.infect(city, {zombies: 4}, game);
-      assert(game.e.withArgs('outbreak').calledOnce);
+      assert(game.e.withArgs('zombies:outbreak').calledOnce);
     });
 
     it('does not outbreak the same city twice during the same call', function () {
       var crowded = {name: 'crowded', zombies: 3, connections: [city]};
       city.connections = [crowded];
       zombies.infect(city, {zombies: 4}, game);
-      assert.equal(game.e.withArgs('outbreak', city).callCount, 1);
+      assert.equal(game.e.withArgs('zombies:outbreak', city).callCount, 1);
     });
 
   })
@@ -41,7 +41,7 @@ describe('zombies', function () {
     it('emits infect event with all cities connected to a city outbreaking', function () {
       city.connections = [{zombies: []}, {zombies: []}, {zombies: []}];
       zombies.outbreak(city, {}, game);
-      assert.equal(game.e.withArgs('infect').callCount, city.connections.length)
+      assert.equal(game.e.withArgs('zombies:infect').callCount, city.connections.length)
     });
 
   });
@@ -64,7 +64,7 @@ describe('zombies', function () {
 
     it('emits zombieRemoved event', function () {
       zombies.kill(city, 2, game);
-      assert.equal(game.e.withArgs('zombieKilled').callCount, 2);
+      assert.equal(game.e.withArgs('zombies:killed').callCount, 2);
     });
 
   });

@@ -32,8 +32,8 @@ describe('cards', function () {
       assert.equal(game.decks.players.length, 1);
     });
 
-    it('emits addCard event', function () {
-      assert(game.e.calledWith('addCard', hand, card));
+    it('emits cards:add event', function () {
+      assert(game.e.calledWith('cards:add', hand, card));
     });
 
   });
@@ -49,8 +49,8 @@ describe('cards', function () {
       assert.equal(hand.length, 0);
     });
 
-    it('emits addCard event', function () {
-      assert(game.e.calledWith('addCard', game.piles.players, card));
+    it('emits cards:add event', function () {
+      assert(game.e.calledWith('cards:add', game.piles.players, card));
     });
 
   });
@@ -71,11 +71,11 @@ describe('cards', function () {
     });
 
     it('emits infect event with the city revealed', function(){
-      assert(game.e.calledWith('infect', city));
+      assert(game.e.calledWith('zombies:infect', city));
     });
 
-    it('emits addCard event for zombies discard pile', function(){
-      assert(game.e.calledWith('addCard', game.piles.zombies));
+    it('emits cards:add event for zombies discard pile', function(){
+      assert(game.e.calledWith('cards:add', game.piles.zombies));
     });
 
   });
@@ -86,7 +86,7 @@ describe('cards', function () {
       it('emits 4 draw events for each player', function(){
         game.players = [{}, {}];
         cards.initialHand(game);
-        assert.equal(game.e.withArgs('draw').callCount, 8);
+        assert.equal(game.e.withArgs('cards:draw').callCount, 8);
       });
     });
 
@@ -94,7 +94,7 @@ describe('cards', function () {
       it('emits 3 draw events for each player', function(){
         game.players = [{}, {}, {}];
         cards.initialHand(game);
-        assert.equal(game.e.withArgs('draw').callCount, 9);
+        assert.equal(game.e.withArgs('cards:draw').callCount, 9);
       });
     });
 
@@ -102,7 +102,7 @@ describe('cards', function () {
       it('emits 2 draw events for each player', function(){
         game.players = [{}, {}, {}, {}];
         cards.initialHand(game);
-        assert.equal(game.e.withArgs('draw').callCount, 8);
+        assert.equal(game.e.withArgs('cards:draw').callCount, 8);
       });
     });
 
@@ -110,7 +110,7 @@ describe('cards', function () {
       it('emits 2 draw events for each player', function(){
         game.players = [{}, {}, {}, {}, {}];
         cards.initialHand(game);
-        assert.equal(game.e.withArgs('draw').callCount, 10);
+        assert.equal(game.e.withArgs('cards:draw').callCount, 10);
       });
     });
 

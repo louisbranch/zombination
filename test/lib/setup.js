@@ -23,8 +23,8 @@ describe('setup', function(){
         assert.equal(game.players.length, 1);
       });
 
-      it('emits the playerJoined event', function(){
-        assert(game.e.calledWith('playerJoined', player));
+      it('emits the players:joined event', function(){
+        assert(game.e.calledWith('players:joined', player));
       });
     });
 
