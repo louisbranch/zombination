@@ -40,8 +40,8 @@ describe('cities', function(){
         assert.equal(player.position, city);
       });
 
-      it('emits cities:enter event', function(){
-        assert(game.e.calledWith('cities:enter', player, city));
+      it('emits cities:entered event', function(){
+        assert(game.e.calledWith('cities:entered', player, city));
       });
     });
 
@@ -81,8 +81,8 @@ describe('cities', function(){
         cities.walk(player, city, game);
       });
 
-      it('emits cities:enter event', function(){
-        assert(game.e.calledWith('cities:enter', player, city));
+      it('emits cities:entered event', function(){
+        assert(game.e.calledWith('cities:entered', player, city));
       });
 
       it('moves player to the destinantion', function(){

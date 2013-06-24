@@ -23,12 +23,12 @@ describe('events', function () {
       assert(emitter.on.calledWith('cards:draw', cards.draw));
     });
 
-    it('binds to cities:enter', function(){
-      assert(emitter.on.calledWith('cities:enter', cities.enter));
-    });
-
     it('binds to cities:fly', function(){
       assert(emitter.on.calledWith('cities:fly', cities.fly));
+    });
+
+    it('binds to cities:startPosition', function(){
+      assert(emitter.on.calledWith('cities:startPosition', cities.startPosition));
     });
 
     it('binds to zombies:infect event', function () {
