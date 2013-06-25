@@ -3,6 +3,8 @@ var sinon = require('sinon');
 var events = require('../../lib/events.js');
 var cards = require('../../lib/cards.js');
 var cities = require('../../lib/cities.js');
+var groups = require('../../lib/groups.js');
+var players = require('../../lib/players.js');
 var zombies = require('../../lib/zombies.js');
 
 describe('events', function () {
@@ -29,6 +31,18 @@ describe('events', function () {
 
     it('binds to cities:startPosition', function(){
       assert(emitter.on.calledWith('cities:startPosition', cities.startPosition));
+    });
+
+    it('binds to cities:walk', function(){
+      assert(emitter.on.calledWith('cities:walk', cities.walk));
+    });
+
+    it('binds to groups:create', function(){
+      assert(emitter.on.calledWith('groups:create', groups.create));
+    });
+
+    it('binds to players:join', function(){
+      assert(emitter.on.calledWith('players:join', players.join));
     });
 
     it('binds to zombies:infect event', function () {

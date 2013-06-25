@@ -1,9 +1,9 @@
 var assert = require('assert');
 var sinon = require('sinon');
-var setup = require('../../lib/setup.js');
+var players = require('../../lib/players.js');
 var Game = require('../../models/game.js');
 
-describe('setup', function(){
+describe('players', function(){
   var game, player;
 
   beforeEach(function(){
@@ -16,7 +16,7 @@ describe('setup', function(){
 
     describe('when player is not in the game', function(){
       beforeEach(function(){
-        setup.join(player, game);
+        players.join(player, game);
       });
 
       it('adds a player to the players list', function(){
@@ -31,7 +31,7 @@ describe('setup', function(){
     describe('when game is full', function(){
       beforeEach(function(){
         game.maxPlayers = 0;
-        setup.join(player, game);
+        players.join(player, game);
       });
 
       it('doesnt add player to game list', function(){
@@ -46,7 +46,7 @@ describe('setup', function(){
     describe('when player is already in', function(){
       beforeEach(function(){
         game.players = [player];
-        setup.join(player, game);
+        players.join(player, game);
       });
 
       it('doesnt add player twice', function(){
