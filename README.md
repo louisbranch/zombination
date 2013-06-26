@@ -17,7 +17,6 @@ Online version of the Pandemic Board Game, if you like this, please support and 
 * Cure/Exterminate zombie groups
 * Player roles
 * Special conditions
-* Add infection cards after players have drawn
 
 ### Interface
 
