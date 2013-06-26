@@ -9,8 +9,8 @@ describe('epidemics', function(){
     game = new Game();
   });
 
-  it('returns 6 equally sized chunks of a deck', function(){
+  it('returns 5 equally sized chunks of a deck', function(){
     var chunks = epidemics.setDifficulty(game);
-    assert.equal(chunks.length, 6);
+    assert.equal(chunks.length, 5);
   });
 });
