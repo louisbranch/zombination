@@ -1,6 +1,7 @@
 var assert = require('assert');
 var sinon = require('sinon');
 var events = require('../../lib/events.js');
+var epidemics = require('../../lib/epidemics.js');
 var cards = require('../../lib/cards.js');
 var cities = require('../../lib/cities.js');
 var groups = require('../../lib/groups.js');
@@ -35,6 +36,10 @@ describe('events', function () {
 
     it('binds to cities:walk', function(){
       assert(emitter.on.calledWith('cities:walk', cities.walk));
+    });
+
+    it('binds to epidemics:setDifficulty', function(){
+      assert(emitter.on.calledWith('epidemics:setDifficulty', epidemics.setDifficulty));
     });
 
     it('binds to groups:create', function(){
