@@ -30,8 +30,8 @@ describe('events', function () {
       assert(emitter.on.calledWith('cities:fly', cities.fly));
     });
 
-    it('binds to cities:startPosition', function(){
-      assert(emitter.on.calledWith('cities:startPosition', cities.startPosition));
+    it('binds to cities:initialPosition', function(){
+      assert(emitter.on.calledWith('cities:initialPosition', cities.initialPosition));
     });
 
     it('binds to cities:walk', function(){
@@ -40,10 +40,6 @@ describe('events', function () {
 
     it('binds to epidemics:setDifficulty', function(){
       assert(emitter.on.calledWith('epidemics:setDifficulty', epidemics.setDifficulty));
-    });
-
-    it('binds to groups:create', function(){
-      assert(emitter.on.calledWith('groups:create', groups.create));
     });
 
     it('binds to players:join', function(){

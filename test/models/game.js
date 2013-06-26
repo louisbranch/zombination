@@ -56,6 +56,13 @@ describe('Game.new', function () {
 
   });
 
+  describe('.groups', function(){
+    it('has one for each zombie type', function(){
+      var groups = Object.keys(game.groups);
+      assert.equal(groups.length, 4);
+    });
+  });
+
   describe('.e', function () {
     it('emits an event shovelling game to callback', function () {
       var spy = sinon.spy();

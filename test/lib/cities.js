@@ -13,16 +13,16 @@ describe('cities', function(){
     game.players = [player]
   });
 
-  describe('.startPosition', function(){
+  describe('.initialPosition', function(){
     it('emits cities:fly event to all players with starting city', function(){
-      cities.startPosition(game);
+      cities.initialPosition(game);
       assert(game.e.calledWith('cities:fly', player, 'Atlanta'));
     });
 
     it('throws error when starting city doesnt exist', function(){
       game.map = [];
       assert.throws(function() {
-        cities.startPosition(game);
+        cities.initialPosition(game);
       });
     });
   });

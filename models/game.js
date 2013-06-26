@@ -4,6 +4,7 @@ var Map = require('./map.js');
 var PlayerDeck = require('../models/player_deck.js');
 var ZombieDeck = require('../models/zombie_deck.js');
 var events = require('../lib/events.js');
+var groups = require('../lib/groups.js');
 
 module.exports = Game;
 
@@ -46,6 +47,7 @@ var DEFAULTS = function () {
 function Game (options) {
   _.extend(this, DEFAULTS(), options);
   events.bindTo(this._emitter);
+  this.groups = groups.create(this);
 }
 
 /*
