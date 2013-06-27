@@ -38,8 +38,8 @@ describe('events', function () {
       assert(emitter.on.calledWith('cities:walk', cities.walk));
     });
 
-    it('binds to epidemics:setDifficulty', function(){
-      assert(emitter.on.calledWith('epidemics:setDifficulty', epidemics.setDifficulty));
+    it('binds to epidemics:shuffle', function(){
+      assert(emitter.on.calledWith('epidemics:shuffle', epidemics.shuffle));
     });
 
     it('binds to players:join', function(){

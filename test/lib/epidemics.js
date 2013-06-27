@@ -11,22 +11,26 @@ describe('epidemics', function(){
     level = game.epidemicCardsPerLevel[game.difficulty];
   });
 
-  it('adds epidemic cards to players deck equally to game difficulty', function(){
-    var originalLength = game.decks.players.length;
-    epidemics.setDifficulty(game);
-    var newLength = game.decks.players.length;
-    assert.equal(originalLength + level, newLength);
-  });
+  describe('.shuffle', function(){
 
-  it('distributes epidemics cards equally', function(){
-    epidemics.setDifficulty(game);
-    var deck = game.decks.players;
-    var size = Math.floor(deck.length / level);
-    var chunk = _.first(deck, size);
-    var cards = _.where(chunk, function (card) {
-      return card.name === 'Epidemic';
+    it('adds epidemic cards to players deck equally to game difficulty', function(){
+      var originalLength = game.decks.players.length;
+      epidemics.shuffle(game);
+      var newLength = game.decks.players.length;
+      assert.equal(originalLength + level, newLength);
     });
-    assert.equal(cards.length, 1);
+
+    it('distributes epidemics cards equally', function(){
+      epidemics.shuffle(game);
+      var deck = game.decks.players;
+      var size = Math.floor(deck.length / level);
+      var chunk = _.first(deck, size);
+      var cards = _.where(chunk, function (card) {
+        return card.name === 'Epidemic';
+      });
+      assert.equal(cards.length, 1);
+    });
+
   });
 
 });
