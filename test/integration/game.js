@@ -23,6 +23,10 @@ describe('Game integration', function(){
     // Initial city position
     assert.equal(luiz.position, 'Atlanta');
 
+    // Initial infection
+    assert.equal(game.decks.zombies.length, 39);
+    assert.equal(game.piles.zombies.length, 9);
+
     // Shuffle epidemics
     assert.equal(game.decks.players.length, 50);
   });

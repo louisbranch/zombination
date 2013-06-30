@@ -1,12 +1,14 @@
 var assert = require('assert');
 var sinon = require('sinon');
 var zombies = require('../../lib/zombies.js');
+var Game = require('../../models/game.js');
 
 describe('zombies', function () {
   var city, game;
 
   beforeEach(function () {
-    game = {e: sinon.spy()};
+    game = new Game();
+    game.e = sinon.spy();
     city = {name: 'Fake City', group: 1, zombies: [], connections: []};
   });
 
@@ -68,4 +70,28 @@ describe('zombies', function () {
     });
 
   });
+
+  describe('.initialInfection', function(){
+    var deckSize, pileSize;
+
+    beforeEach(function(){
+      deckSize = game.decks.zombies.length;
+      pileSize = game.piles.zombies.length;
+      zombies.initialInfection(game);
+    });
+
+    it('removes 9 cards from zombies deck', function(){
+      assert.equal(game.decks.zombies.length, deckSize - 9);
+    });
+
+    it('adds those cards to zombies pile', function(){
+      assert.equal(game.piles.zombies.length, pileSize + 9);
+    });
+
+    it('emits infect event 9 times', function(){
+      assert.equal(game.e.withArgs('zombies:infect').callCount, 9);
+    });
+
+  });
+
 });

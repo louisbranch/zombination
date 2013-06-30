@@ -27,6 +27,14 @@ describe('events', function () {
       assert(emitter.on.calledWith('cards:draw', cards.draw));
     });
 
+    it('binds to cards:initialHand event', function(){
+      assert(emitter.on.calledWith('cards:initialHand', cards.initialHand));
+    });
+
+    it('binds to cards:reveal event', function(){
+      assert(emitter.on.calledWith('cards:reveal', cards.reveal));
+    });
+
     it('binds to cities:fly', function(){
       assert(emitter.on.calledWith('cities:fly', cities.fly));
     });
@@ -53,6 +61,10 @@ describe('events', function () {
 
     it('binds to zombies:infect event', function () {
       assert(emitter.on.calledWith('zombies:infect', zombies.infect));
+    });
+
+    it('binds to zombies:initialInfection event', function () {
+      assert(emitter.on.calledWith('zombies:initialInfection', zombies.initialInfection));
     });
 
     it('binds to zombies:kill event', function () {
