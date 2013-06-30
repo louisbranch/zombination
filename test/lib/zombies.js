@@ -1,5 +1,6 @@
 var assert = require('assert');
 var sinon = require('sinon');
+var _ = require('lodash');
 var zombies = require('../../lib/zombies.js');
 var Game = require('../../models/game.js');
 
@@ -91,6 +92,31 @@ describe('zombies', function () {
     it('emits infect event 9 times', function(){
       assert.equal(game.e.withArgs('zombies:infect').callCount, 9);
     });
+
+    it('emits infect event first 3 cities with 3 zombies', function(){
+      var result = infectTestHelper([0,1,2], 3);
+      assert.equal(result.length, 3);
+    });
+
+    it('emits infect event next 3 cities with 2 zombies', function(){
+      var result = infectTestHelper([3,4,5], 2);
+      assert.equal(result.length, 3);
+    });
+
+    it('emits infect event last 3 cities with 1 zombie', function(){
+      var result = infectTestHelper([6,7,8], 1);
+      assert.equal(result.length, 3);
+    });
+
+    function infectTestHelper (range, zombiesCount) {
+      var calls = [];
+      _.each(range, function (callIndex) {
+        calls.push(game.e.getCall(callIndex));
+      });
+      return  _.where(calls, function (call) {
+        return call.args[2].zombies === zombiesCount;
+      })
+    }
 
   });
 
