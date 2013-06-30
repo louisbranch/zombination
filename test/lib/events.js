@@ -4,6 +4,7 @@ var events = require('../../lib/events.js');
 var epidemics = require('../../lib/epidemics.js');
 var cards = require('../../lib/cards.js');
 var cities = require('../../lib/cities.js');
+var game = require('../../lib/game.js');
 var groups = require('../../lib/groups.js');
 var players = require('../../lib/players.js');
 var zombies = require('../../lib/zombies.js');
@@ -40,6 +41,10 @@ describe('events', function () {
 
     it('binds to epidemics:shuffle', function(){
       assert(emitter.on.calledWith('epidemics:shuffle', epidemics.shuffle));
+    });
+
+    it('binds to game:init', function(){
+      assert(emitter.on.calledWith('game:init', game.init));
     });
 
     it('binds to players:join', function(){
