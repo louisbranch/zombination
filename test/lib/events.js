@@ -7,6 +7,7 @@ var cities = require('../../lib/cities.js');
 var game = require('../../lib/game.js');
 var groups = require('../../lib/groups.js');
 var players = require('../../lib/players.js');
+var turns = require('../../lib/turns.js');
 var zombies = require('../../lib/zombies.js');
 
 describe('events', function () {
@@ -57,6 +58,10 @@ describe('events', function () {
 
     it('binds to players:join', function(){
       assert(emitter.on.calledWith('players:join', players.join));
+    });
+
+    it('binds to turns:first', function(){
+      assert(emitter.on.calledWith('turns:first', turns.first));
     });
 
     it('binds to zombies:infect event', function () {
