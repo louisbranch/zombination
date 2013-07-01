@@ -40,6 +40,7 @@ describe('Game integration', function(){
       return city.zombies.length === 1;
     }).length, 3);
 
+    // Remove zombies from pool
     var zombiesTotal = _.foldr(game.zombies, function (total, zombies) {
       return total += zombies;
     }, 0);

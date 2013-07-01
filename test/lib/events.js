@@ -68,6 +68,10 @@ describe('events', function () {
       assert(emitter.on.calledWith('zombies:infect', zombies.infect));
     });
 
+    it('binds to zombies:infected event', function () {
+      assert(emitter.on.calledWith('zombies:infected', zombies.infected));
+    });
+
     it('binds to zombies:initialInfection event', function () {
       assert(emitter.on.calledWith('zombies:initialInfection', zombies.initialInfection));
     });
