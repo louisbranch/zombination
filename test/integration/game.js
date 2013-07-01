@@ -15,7 +15,7 @@ describe('Game integration', function(){
     game.e('players:join', larissa);
   });
 
-  it('prepates the game', function(){
+  it('prepares the game', function(){
     // Joins game
     assert.equal(game.players.length, 2);
 
@@ -54,6 +54,21 @@ describe('Game integration', function(){
     assert(_.contains(game.turn.order, luiz));
     assert(_.contains(game.turn.order, larissa));
     assert.equal(game.turn.player, game.turn.order[0]);
+  });
+
+  it('plays a turn', function(){
+    game.e('game:init');
+
+    // Player walk to cities
+    game.e('cities:walk', luiz, 'Chicago');
+    assert.equal(luiz.position, 'Chicago');
+    assert.equal(luiz.actions, 1);
+
+    // Player spend all actions
+    game.e('cities:walk', luiz, 'Montreal');
+    game.e('cities:walk', luiz, 'New York');
+    game.e('cities:walk', luiz, 'London');
+    assert.equal(luiz.actions, 4);
   });
 
 });

@@ -2,6 +2,7 @@ var assert = require('assert');
 var sinon = require('sinon');
 var players = require('../../lib/players.js');
 var Game = require('../../models/game.js');
+var Player = require('../../models/player.js');
 
 describe('players', function(){
   var game, player;
@@ -9,7 +10,7 @@ describe('players', function(){
   beforeEach(function(){
     game = new Game();
     game.e = sinon.spy();
-    player = {};
+    player = new Player();
   });
 
   describe('.join', function(){
@@ -58,4 +59,22 @@ describe('players', function(){
       });
     });
   });
+
+  describe('.spentAction', function(){
+
+    it('increase the number of player action', function(){
+      players.spentAction(player, game);
+      assert.equal(player.actions, 1);
+    });
+
+    describe('when player reaches max action per turn', function(){
+      it('emits turns:end event', function(){
+        player.actions = 3;
+        players.spentAction(player, game);
+        assert(game.e.calledWith('turns:end'));
+      });
+    });
+
+  });
+
 });

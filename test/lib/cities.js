@@ -88,6 +88,11 @@ describe('cities', function(){
       it('moves player to the destinantion', function(){
         assert.equal(player.position, city);
       });
+
+      it('emits players:spentAction event', function(){
+        assert(game.e.calledWith('players:spentAction'));
+      });
+
     });
 
     describe('when city is not connected to origin', function(){

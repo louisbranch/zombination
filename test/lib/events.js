@@ -60,6 +60,10 @@ describe('events', function () {
       assert(emitter.on.calledWith('players:join', players.join));
     });
 
+    it('binds to players:spentAction', function(){
+      assert(emitter.on.calledWith('players:spentAction', players.spentAction));
+    });
+
     it('binds to turns:first', function(){
       assert(emitter.on.calledWith('turns:first', turns.first));
     });
@@ -87,7 +91,6 @@ describe('events', function () {
     it('binds to zombies:outbreak event', function () {
       assert(emitter.on.calledWith('zombies:outbreak', zombies.outbreak));
     });
-
 
   });
 
