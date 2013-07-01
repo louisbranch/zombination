@@ -58,6 +58,7 @@ describe('Game integration', function(){
 
   it('plays a turn', function(){
     game.e('game:init');
+    var player = game.turn.player;
 
     // Player walks to cities
     game.e('cities:walk', player, 'Chicago');
@@ -70,8 +71,8 @@ describe('Game integration', function(){
     game.e('cities:walk', player, 'London');
     assert.equal(player.actions, 4);
 
-    // Draw 2 more cards
-    assert(player.hand.length === 5 || player.hand.length === 6);
+    // Draw 2 more cards (one can be an epidemic card)
+    assert(player.hand.length > 4);
   });
 
 });
