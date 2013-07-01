@@ -47,7 +47,7 @@ var DEFAULTS = function () {
 function Game (options) {
   _.extend(this, DEFAULTS(), options);
   events.bindTo(this._emitter);
-  this.groups = groups.create(this);
+  this.zombies = groups.create(this);
 }
 
 /*

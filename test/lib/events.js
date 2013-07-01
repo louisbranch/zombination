@@ -76,6 +76,10 @@ describe('events', function () {
       assert(emitter.on.calledWith('zombies:kill', zombies.kill));
     });
 
+    it('binds to zombies:killed event', function () {
+      assert(emitter.on.calledWith('zombies:killed', zombies.killed));
+    });
+
     it('binds to zombies:outbreak event', function () {
       assert(emitter.on.calledWith('zombies:outbreak', zombies.outbreak));
     });

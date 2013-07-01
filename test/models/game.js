@@ -56,10 +56,10 @@ describe('Game.new', function () {
 
   });
 
-  describe('.groups', function(){
+  describe('.zombies', function(){
     it('has one for each zombie type', function(){
-      var groups = Object.keys(game.groups);
-      assert.equal(groups.length, 4);
+      var zombies = Object.keys(game.zombies);
+      assert.equal(zombies.length, 4);
     });
   });
 

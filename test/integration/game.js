@@ -4,15 +4,18 @@ var Game = require('../../models/game.js');
 var Player = require('../../models/player.js');
 
 describe('Game integration', function(){
+  var game, luiz, larissa;
 
-  it('plays a full game', function(){
-    var game = new Game();
-    var luiz = new Player({name: 'Luiz'});
-    var larissa = new Player({name: 'Larissa'});
+  beforeEach(function(){
+    game = new Game();
+    luiz = new Player({name: 'Luiz'});
+    larissa = new Player({name: 'Larissa'});
 
     game.e('players:join', luiz);
     game.e('players:join', larissa);
+  });
 
+  it('prepates the game', function(){
     // Joins game
     assert.equal(game.players.length, 2);
 
@@ -36,6 +39,11 @@ describe('Game integration', function(){
     assert.equal(_.where(game.map, function (city) {
       return city.zombies.length === 1;
     }).length, 3);
+
+    var zombiesTotal = _.foldr(game.zombies, function (total, zombies) {
+      return total += zombies;
+    }, 0);
+    assert.equal(zombiesTotal, 24 * 4 - (3 * 3 + 3 * 2 + 3 * 1));
 
     // Shuffle epidemics
     assert.equal(game.decks.players.length, 50);
