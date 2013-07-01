@@ -69,6 +69,9 @@ describe('Game integration', function(){
     game.e('cities:walk', player, 'New York');
     game.e('cities:walk', player, 'London');
     assert.equal(player.actions, 4);
+
+    // Draw 2 more cards
+    assert(player.hand.length === 5 || player.hand.length === 6);
   });
 
 });
