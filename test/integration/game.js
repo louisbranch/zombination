@@ -4,15 +4,15 @@ var Game = require('../../models/game.js');
 var Player = require('../../models/player.js');
 
 describe('Game integration', function(){
-  var game, luiz, larissa;
+  var game, player, player2;
 
   beforeEach(function(){
     game = new Game();
-    luiz = new Player({name: 'Luiz'});
-    larissa = new Player({name: 'Larissa'});
+    player = new Player({name: 'Luiz'});
+    player2 = new Player({name: 'Larissa'});
 
-    game.e('players:join', luiz);
-    game.e('players:join', larissa);
+    game.e('players:join', player);
+    game.e('players:join', player2);
   });
 
   it('prepares the game', function(){
@@ -22,10 +22,10 @@ describe('Game integration', function(){
     game.e('game:init');
 
     // Initial Hand
-    assert.equal(luiz.hand.length, 4);
+    assert.equal(player.hand.length, 4);
 
     // Initial city position
-    assert.equal(luiz.position, 'Atlanta');
+    assert.equal(player.position, 'Atlanta');
 
     // Initial infection
     assert.equal(game.decks.zombies.length, 39);
@@ -51,24 +51,24 @@ describe('Game integration', function(){
 
     // Initial Turn
     assert.equal(game.turn.number, 1);
-    assert(_.contains(game.turn.order, luiz));
-    assert(_.contains(game.turn.order, larissa));
+    assert(_.contains(game.turn.order, player));
+    assert(_.contains(game.turn.order, player2));
     assert.equal(game.turn.player, game.turn.order[0]);
   });
 
   it('plays a turn', function(){
     game.e('game:init');
 
-    // Player walk to cities
-    game.e('cities:walk', luiz, 'Chicago');
-    assert.equal(luiz.position, 'Chicago');
-    assert.equal(luiz.actions, 1);
+    // Player walks to cities
+    game.e('cities:walk', player, 'Chicago');
+    assert.equal(player.position, 'Chicago');
+    assert.equal(player.actions, 1);
 
-    // Player spend all actions
-    game.e('cities:walk', luiz, 'Montreal');
-    game.e('cities:walk', luiz, 'New York');
-    game.e('cities:walk', luiz, 'London');
-    assert.equal(luiz.actions, 4);
+    // Player spends all actions
+    game.e('cities:walk', player, 'Montreal');
+    game.e('cities:walk', player, 'New York');
+    game.e('cities:walk', player, 'London');
+    assert.equal(player.actions, 4);
   });
 
 });
