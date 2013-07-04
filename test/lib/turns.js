@@ -55,7 +55,7 @@ describe('turns', function(){
     });
 
     it('emits turns:next event', function(){
-      assert(game.e.calledWith('turns:new'))
+      assert(game.e.calledWith('turns:next'))
     });
 
   });

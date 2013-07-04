@@ -78,6 +78,9 @@ describe('Game integration', function(){
 
     // Infect cities
     assert.equal(game.decks.zombies.length, 37);
+
+    // Change current player
+    assert.notDeepEqual(game.turn.player, player);
   });
 
 });

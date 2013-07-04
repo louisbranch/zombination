@@ -64,12 +64,16 @@ describe('events', function () {
       assert(emitter.on.calledWith('players:spentAction', players.spentAction));
     });
 
+    it('binds to turns:end', function(){
+      assert(emitter.on.calledWith('turns:end', turns.end));
+    });
+
     it('binds to turns:first', function(){
       assert(emitter.on.calledWith('turns:first', turns.first));
     });
 
-    it('binds to turns:end', function(){
-      assert(emitter.on.calledWith('turns:end', turns.end));
+    it('binds to turns:next', function(){
+      assert(emitter.on.calledWith('turns:next', turns.next));
     });
 
     it('binds to zombies:infect event', function () {
