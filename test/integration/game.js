@@ -73,6 +73,11 @@ describe('Game integration', function(){
 
     // Draw 2 more cards (one can be an epidemic card)
     assert(player.hand.length > 4);
+
+    // End of turn
+
+    // Infect cities
+    assert.equal(game.decks.zombies.length, 37);
   });
 
 });
