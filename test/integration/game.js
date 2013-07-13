@@ -41,10 +41,7 @@ describe('Game integration', function(){
     }).length, 3);
 
     // Remove zombies from pool
-    var zombiesTotal = _.foldr(game.zombies, function (total, zombies) {
-      return total += zombies;
-    }, 0);
-    assert.equal(zombiesTotal, 24 * 4 - (3 * 3 + 3 * 2 + 3 * 1));
+    assert.equal(zombiesTotal(game), 24 * 4 - (3 * 3 + 3 * 2 + 3 * 1));
 
     // Shuffle epidemics
     assert.equal(game.decks.players.length, 50);
@@ -59,6 +56,7 @@ describe('Game integration', function(){
   it('plays a turn', function(){
     game.e('game:init');
     var player = game.turn.player;
+    var zombiesAtStart = zombiesTotal(game);
 
     // Player walks to cities
     game.e('cities:walk', player, 'Chicago');
@@ -78,9 +76,17 @@ describe('Game integration', function(){
 
     // Infect cities
     assert.equal(game.decks.zombies.length, 37);
+    assert.equal(game.piles.zombies.length, 11);
+    assert.equal(zombiesAtStart, zombiesTotal(game) - 2);
 
     // Change current player
     assert.notDeepEqual(game.turn.player, player);
   });
+
+  function zombiesTotal(game) {
+    return _.foldr(game.zombies, function (total, zombies) {
+      return total += zombies;
+    }, 0);
+  }
 
 });

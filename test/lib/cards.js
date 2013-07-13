@@ -67,7 +67,7 @@ describe('cards', function () {
       cards.reveal(game);
     });
 
-    it('removes cards equals to game infection rate from the top of the zombies deck', function(){
+    it('reveals cards equals to game infection rate from the top of the zombies deck', function(){
       assert.equal(game.decks.zombies.length, 0);
     });
 
