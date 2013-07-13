@@ -67,7 +67,7 @@ describe('zombies', function () {
 
     it('emits zombieRemoved event', function () {
       zombies.kill(city, 2, game);
-      assert.equal(game.e.withArgs('zombies:killed').callCount, 2);
+      assert.equal(game.e.withArgs('zombies:kill:end').callCount, 2);
     });
 
   });

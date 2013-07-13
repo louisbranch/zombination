@@ -25,7 +25,7 @@ describe('players', function(){
       });
 
       it('emits the players:joined event', function(){
-        assert(game.e.calledWith('players:joined', player));
+        assert(game.e.calledWith('players:join:end', player));
       });
     });
 
@@ -40,7 +40,7 @@ describe('players', function(){
       });
 
       it('emits the error:playerJoined event', function(){
-        assert(game.e.calledWith('error:gameFull', player));
+        assert(game.e.calledWith('players:join:error', player));
       });
     });
 
@@ -55,7 +55,7 @@ describe('players', function(){
       });
 
       it('emits the error:playerJoined event', function(){
-        assert(game.e.calledWith('error:playerJoined', player));
+        assert(game.e.calledWith('players:join:error', player));
       });
     });
   });
