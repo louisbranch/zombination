@@ -60,19 +60,42 @@ describe('players', function(){
     });
   });
 
-  describe('.spentAction', function(){
+  describe('.act', function(){
+    var city;
 
-    it('increase the number of player action', function(){
-      players.spentAction(player, game);
-      assert.equal(player.actions, 1);
+    beforeEach(function(){
+      city = {name: 'Chicago'}
+      game.once = sinon.spy();
+      players.act(player, ['cities:walk', player, city], game);
     });
 
-    describe('when player reaches max action per turn', function(){
-      it('emits turns:end event', function(){
+    it('forwards event to game', function(){
+      assert(game.e.calledWith('cities:walk', player, city));
+    });
+
+    it('subscribes to same event on end condition', function(){
+      assert(game.once.calledWith('cities:walk:end'));
+    });
+
+    describe('when event ends', function(){
+
+      beforeEach(function(){
+        game = new Game();
+        players.act(player, ['test:event', player], game);
+      });
+
+      it('increase the number of player action', function(){
+        game.e('test:event:end');
+        assert.equal(player.actions, 1);
+      });
+
+      it('emits turns:end event when player reaches max actions', function(){
         player.actions = 3;
-        players.spentAction(player, game);
+        game.e = sinon.spy();
+        game._emitter.emit('test:event:end');
         assert(game.e.calledWith('turns:end'));
       });
+
     });
 
   });
