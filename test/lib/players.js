@@ -39,7 +39,7 @@ describe('players', function(){
         assert.equal(game.players.length, 0);
       });
 
-      it('emits the error:playerJoined event', function(){
+      it('emits the players:join:error event', function(){
         assert(game.e.calledWith('players:join:error', player));
       });
     });
