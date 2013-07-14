@@ -30,14 +30,40 @@ describe('zombies', function () {
       assert(game.e.withArgs('zombies:outbreak').calledOnce);
     });
 
+    it('emits zombies:infect:end', function(){
+      zombies.infect(city, {}, game);
+      assert(game.e.calledWith('zombies:infect:end'));
+    });
+
     it('does not outbreak the same city twice during the same call', function () {
       var crowded = {name: 'crowded', zombies: 3, connections: [city]};
       city.connections = [crowded];
       zombies.infect(city, {zombies: 4}, game);
-      assert.equal(game.e.withArgs('zombies:outbreak', city).callCount, 1);
+      assert(game.e.withArgs('zombies:outbreak', city).calledOnce);
     });
 
-  })
+  });
+
+  describe('.infected', function(){
+    var zombie, pool;
+
+    beforeEach(function(){
+      zombie = {group: 1};
+    });
+
+    it('removes a zombie from the group pool', function(){
+      pool = game.zombies[zombie.group];
+      zombies.infected(zombie, game);
+      assert.equal(game.zombies[zombie.group], pool - 1);
+    });
+
+    it('emits game:over event if pool reaches 0', function(){
+      game.zombies[zombie.group] = 1;
+      zombies.infected(zombie, game);
+      assert(game.e.calledWith('game:over', 'Ran out of zombies!'));
+    });
+
+  });
 
   describe('.outbreak', function () {
 
@@ -68,6 +94,17 @@ describe('zombies', function () {
     it('emits zombieRemoved event', function () {
       zombies.kill(city, 2, game);
       assert.equal(game.e.withArgs('zombies:kill:end').callCount, 2);
+    });
+
+  });
+
+  describe('.killed', function(){
+
+    it('adds a zombie to the group pool', function(){
+      var zombie = {group: 1};
+      pool = game.zombies[zombie.group];
+      zombies.killed(zombie, game);
+      assert.equal(game.zombies[zombie.group], pool + 1);
     });
 
   });
