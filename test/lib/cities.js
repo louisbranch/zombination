@@ -81,16 +81,12 @@ describe('cities', function(){
         cities.walk(player, city, game);
       });
 
-      it('emits cities:enter:end event', function(){
-        assert(game.e.calledWith('cities:enter:end', player, city));
-      });
-
       it('moves player to the destinantion', function(){
         assert.equal(player.position, city);
       });
 
-      it('emits players:spentAction event', function(){
-        assert(game.e.calledWith('players:spentAction'));
+      it('emits cities:enter:end event', function(){
+        assert(game.e.calledWith('cities:enter:end', player, city));
       });
 
     });

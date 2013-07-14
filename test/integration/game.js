@@ -59,14 +59,14 @@ describe('Game integration', function(){
     var zombiesAtStart = zombiesTotal(game);
 
     // Player walks to cities
-    game.e('cities:walk', player, 'Chicago');
+    game.e('players:act', player, ['cities:walk', player, 'Chicago']);
     assert.equal(player.position, 'Chicago');
     assert.equal(player.actions, 1);
 
     // Player spends all actions
-    game.e('cities:walk', player, 'Montreal');
-    game.e('cities:walk', player, 'New York');
-    game.e('cities:walk', player, 'London');
+    game.e('players:act', player, ['cities:walk', player, 'Montreal']);
+    game.e('players:act', player, ['cities:walk', player, 'New York']);
+    game.e('players:act', player, ['cities:walk', player, 'London']);
     assert.equal(player.actions, 4);
 
     // Draw 2 more cards (one can be an epidemic card)

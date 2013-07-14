@@ -60,4 +60,9 @@ Game.prototype.e = function () {
   //TODO call async db log
   args.push(this);
   return this._emitter.emit.apply(this._emitter, args);
-}
+};
+
+Game.prototype.once = function () {
+  var args = _.toArray(arguments);
+  return this._emitter.once.apply(this._emitter, args);
+};
