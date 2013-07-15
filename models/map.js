@@ -1,5 +1,6 @@
 var _ = require('lodash');
 var json = require('../data/map.json');
+var City = require('./city');
 var cachedMap;
 
 module.exports = Map;
@@ -12,6 +13,10 @@ function Map (map, purgeCache) {
   map = map || json;
   var nodes = map.nodes;
 
+  _.each(map.nodes, function (attributes, name) {
+    nodes[name] = new City(name, attributes)
+  });
+
   _.each(map.links, function (link) {
 
     _.forOwn(link, function (target, source) {
@@ -22,18 +27,11 @@ function Map (map, purgeCache) {
 
   });
 
-  _.each(nodes, function (city) {
-    city.zombies = []
-  });
-
   if (!purgeCache) cachedMap = nodes;
   return nodes;
 }
 
 function createConnections (target, source) {
-  target.connections = target.connections || [];
-  source.connections = source.connections || [];
-
   target.connections.push(source);
   source.connections.push(target);
 }

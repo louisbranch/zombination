@@ -10,3 +10,12 @@ describe('.new', function(){
 
 });
 
+describe('.toString', function(){
+
+  it('outputs card name', function(){
+    var card = new Card({name: 'Test Card'});
+    assert.equal(card.toString(), 'Test Card');
+  });
+
+});
+

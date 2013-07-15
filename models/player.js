@@ -21,5 +21,5 @@ function Player (options) {
 }
 
 Player.prototype.toString = function () {
-  return this.name + ' [' + this.role + ']';
+  return this.name;
 }

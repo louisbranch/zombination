@@ -13,9 +13,9 @@ describe('Player', function(){
   });
 
   describe('.toString', function(){
-    it('outputs player name and role', function(){
+    it('outputs player name', function(){
       player = new Player({name: 'Luiz', role: 'Medic'});
-      assert.equal(player.toString(), 'Luiz [Medic]');
+      assert.equal(player.toString(), 'Luiz');
     });
   });
 
