@@ -1,5 +1,6 @@
 var _ = require('lodash');
 var EventEmitter = require('events').EventEmitter;
+var util = require('util');
 var Map = require('./map.js');
 var PlayerDeck = require('../models/player_deck.js');
 var ZombieDeck = require('../models/zombie_deck.js');
@@ -57,8 +58,7 @@ function Game (options) {
  */
 Game.prototype.e = function () {
   var args = _.toArray(arguments);
-  //TODO call async db log
-  //console.log(args.join(', '));
+  if (process.env.DEBUG) util.debug(args.join(', '));
   args.push(this);
   return this._emitter.emit.apply(this._emitter, args);
 };
