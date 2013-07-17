@@ -72,7 +72,7 @@ describe('cards', function () {
     });
 
     it('emits infect event with the city revealed', function(){
-      assert(game.e.calledWith('zombies:infect', city));
+      assert(game.e.calledWith('zombies:infect', city, {zombies: 1}));
     });
 
     it('emits cards:add event for zombies discard pile', function(){

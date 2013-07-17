@@ -77,7 +77,7 @@ describe('Game integration', function(){
     // Infect cities
     assert.equal(game.decks.zombies.length, 37);
     assert.equal(game.piles.zombies.length, 11);
-    //assert(zombiesAtStart == zombiesTotal(game));
+    assert.equal(zombiesAtStart - 2, zombiesTotal(game));
 
     // Change current player
     assert.notDeepEqual(game.turn.player, player);
