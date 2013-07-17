@@ -13,8 +13,8 @@ describe('.new', function(){
 describe('.toString', function(){
 
   it('outputs zombie', function(){
-    var zombie = new Zombie({group: 1});
-    assert.equal(zombie.toString(), 'ZOMBIE!!!');
+    var zombie = new Zombie('yellow');
+    assert.equal(zombie.toString(), 'yellow ZOMBIE!!!');
   });
 
 });

@@ -48,7 +48,7 @@ describe('zombies', function () {
     var zombie, pool;
 
     beforeEach(function(){
-      zombie = {group: 1};
+      zombie = {group: 'yellow'};
     });
 
     it('removes a zombie from the group pool', function(){
@@ -101,7 +101,7 @@ describe('zombies', function () {
   describe('.killed', function(){
 
     it('adds a zombie to the group pool', function(){
-      var zombie = {group: 1};
+      var zombie = {group: 'yellow'};
       pool = game.zombies[zombie.group];
       zombies.killed(zombie, game);
       assert.equal(game.zombies[zombie.group], pool + 1);

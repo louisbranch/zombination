@@ -8,7 +8,7 @@ describe('groups', function(){
 
     it('creates a key/value map with group and max zombies per group', function(){
       var game = new Game();
-      assert.deepEqual(groups.create(game), { 1: 24, 2: 24, 3: 24, 4: 24 });
+      assert.deepEqual(groups.create(game), { yellow: 24, blue: 24, black: 24, red: 24 });
     });
 
   });

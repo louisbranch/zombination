@@ -5,5 +5,5 @@ function Zombie(group) {
 }
 
 Zombie.prototype.toString = function () {
-  return "ZOMBIE!!!";
+  return this.group + " ZOMBIE!!!";
 };
