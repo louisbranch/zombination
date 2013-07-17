@@ -6,10 +6,6 @@ var cachedMap;
 module.exports = Map;
 
 function Map (map, purgeCache) {
-  if (!purgeCache && cachedMap) {
-    return _.cloneDeep(cachedMap);
-  }
-
   map = map || json;
   var nodes = map.nodes;
 
@@ -27,7 +23,6 @@ function Map (map, purgeCache) {
 
   });
 
-  if (!purgeCache) cachedMap = nodes;
   return nodes;
 }
 
