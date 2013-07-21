@@ -1,16 +1,55 @@
 var assert = require('assert');
+var sinon = require('sinon');
 var groups = require('../../lib/groups.js');
 var Game = require('../../models/game.js');
 
 describe('groups', function(){
+  var game;
+
+  beforeEach(function(){
+    game = new Game();
+    game.e = sinon.spy();
+  });
 
   describe('.create', function(){
 
     it('creates a key/value map with group and max zombies per group', function(){
-      var game = new Game();
       assert.deepEqual(groups.create(game), { yellow: 24, blue: 24, black: 24, red: 24 });
     });
 
   });
+
+  describe('.add', function(){
+
+    it('adds a zombie to the group pool', function(){
+      var zombie = {group: 'yellow'};
+      pool = game.zombies[zombie.group];
+      groups.add(zombie, game);
+      assert.equal(game.zombies[zombie.group], pool + 1);
+    });
+
+  });
+
+  describe('.remove', function(){
+    var zombie, pool;
+
+    beforeEach(function(){
+      zombie = {group: 'yellow'};
+    });
+
+    it('removes a zombie from the group pool', function(){
+      pool = game.zombies[zombie.group];
+      groups.remove(zombie, game);
+      assert.equal(game.zombies[zombie.group], pool - 1);
+    });
+
+    it('emits game:over event if pool reaches 0', function(){
+      game.zombies[zombie.group] = 1;
+      groups.remove(zombie, game);
+      assert(game.e.calledWith('game:over', 'Ran out of zombies!'));
+    });
+
+  });
+
 
 });

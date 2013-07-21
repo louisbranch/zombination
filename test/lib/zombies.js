@@ -44,27 +44,6 @@ describe('zombies', function () {
 
   });
 
-  describe('.infected', function(){
-    var zombie, pool;
-
-    beforeEach(function(){
-      zombie = {group: 'yellow'};
-    });
-
-    it('removes a zombie from the group pool', function(){
-      pool = game.zombies[zombie.group];
-      zombies.infected(zombie, game);
-      assert.equal(game.zombies[zombie.group], pool - 1);
-    });
-
-    it('emits game:over event if pool reaches 0', function(){
-      game.zombies[zombie.group] = 1;
-      zombies.infected(zombie, game);
-      assert(game.e.calledWith('game:over', 'Ran out of zombies!'));
-    });
-
-  });
-
   describe('.outbreak', function () {
 
     it('emits infect event with all cities connected to a city outbreaking', function () {
@@ -94,17 +73,6 @@ describe('zombies', function () {
     it('emits zombieRemoved event', function () {
       zombies.kill(city, 2, game);
       assert.equal(game.e.withArgs('zombies:kill:end').callCount, 2);
-    });
-
-  });
-
-  describe('.killed', function(){
-
-    it('adds a zombie to the group pool', function(){
-      var zombie = {group: 'yellow'};
-      pool = game.zombies[zombie.group];
-      zombies.killed(zombie, game);
-      assert.equal(game.zombies[zombie.group], pool + 1);
     });
 
   });

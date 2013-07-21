@@ -81,7 +81,7 @@ describe('events', function () {
     });
 
     it('binds to zombies:infected event', function () {
-      assert(emitter.on.calledWith('zombies:infect:end', zombies.infected));
+      assert(emitter.on.calledWith('zombies:infect:end', groups.remove));
     });
 
     it('binds to zombies:initialInfection event', function () {
@@ -93,7 +93,7 @@ describe('events', function () {
     });
 
     it('binds to zombies:killed event', function () {
-      assert(emitter.on.calledWith('zombies:kill:end', zombies.killed));
+      assert(emitter.on.calledWith('zombies:kill:end', groups.add));
     });
 
     it('binds to zombies:outbreak event', function () {
