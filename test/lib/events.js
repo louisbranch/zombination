@@ -56,6 +56,10 @@ describe('events', function () {
       assert(emitter.on.calledWith('game:start', game.start));
     });
 
+    it('binds to game:over', function(){
+      assert(emitter.on.calledWith('game:over', game.over));
+    });
+
     it('binds to players:act', function(){
       assert(emitter.on.calledWith('players:act', players.act));
     });
