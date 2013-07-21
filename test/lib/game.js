@@ -9,10 +9,10 @@ describe('game/lib', function(){
   beforeEach(function(){
     game = new Game;
     game.e = sinon.spy();
-    lib.init(game);
+    lib.start(game);
   });
 
-  describe('.init', function(){
+  describe('.start', function(){
 
     it('emits cards:initialHand event', function(){
       assert(game.e.calledWith('cards:initialHand'));

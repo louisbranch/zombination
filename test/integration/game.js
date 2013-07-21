@@ -19,7 +19,7 @@ describe('Game integration', function(){
     // Joins game
     assert.equal(game.players.length, 2);
 
-    game.e('game:init');
+    game.e('game:start');
 
     // Initial Hand
     assert.equal(player.hand.length, 4);
@@ -54,7 +54,7 @@ describe('Game integration', function(){
   });
 
   it('plays a turn', function(){
-    game.e('game:init');
+    game.e('game:start');
     var player = game.turn.player;
     var zombiesAtStart = zombiesTotal(game);
 

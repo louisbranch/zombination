@@ -52,8 +52,8 @@ describe('events', function () {
       assert(emitter.on.calledWith('epidemics:shuffle', epidemics.shuffle));
     });
 
-    it('binds to game:init', function(){
-      assert(emitter.on.calledWith('game:init', game.init));
+    it('binds to game:start', function(){
+      assert(emitter.on.calledWith('game:start', game.start));
     });
 
     it('binds to players:act', function(){
