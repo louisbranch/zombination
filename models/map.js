@@ -1,29 +1,29 @@
 var _ = require('lodash');
 var json = require('../data/map.json');
 var City = require('./city');
-var cachedMap;
 
 module.exports = Map;
 
-function Map (map, purgeCache) {
-  map = map || json;
-  var nodes = map.nodes;
+function Map (file) {
+  parseFile(file, this);
+}
 
-  _.each(map.nodes, function (attributes, name) {
-    nodes[name] = new City(name, attributes)
+function parseFile(file, map) {
+  file = file || json;
+
+  _.each(file.nodes, function (attributes, name) {
+    map[name] = new City(name, attributes)
   });
 
-  _.each(map.links, function (link) {
+  _.each(file.links, function (link) {
 
     _.forOwn(link, function (target, source) {
-      target = nodes[target];
-      source = nodes[source];
+      target = map[target];
+      source = map[source];
       createConnections(target, source);
     });
 
   });
-
-  return nodes;
 }
 
 function createConnections (target, source) {
