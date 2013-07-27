@@ -15,14 +15,27 @@ describe('playOptions', function(){
     player = new Player({position: city});
   });
 
-  describe('when two players are in the same city', function(){
-    describe('when current player has a card with city name', function(){
+  describe('.fly', function(){
+
+    beforeEach(function(){
+
+      player.hand = [new Card({name: 'New York'})];
     });
-    describe('when other player has a card with city name', function(){
+
+    it('can fly to other card cities', function(){
+      var result = options.fly(player);
+      assert.deepEqual(result, {'New York': ['flyTo']});
     });
+
+    it('can fly from the current city with same card', function(){
+      player.position = game.map['New York'];
+      var result = options.fly(player);
+      assert.deepEqual(result, {'New York': ['flyFrom']});
+    });
+
   });
 
-  describe('cure diseases', function(){
+  describe('.cure', function(){
 
     it('can cure a color with 5 or more cards', function(){
       player.hand = [
@@ -32,7 +45,7 @@ describe('playOptions', function(){
         new Card({group: 'blue', name: 'Montreal'}),
         new Card({group: 'blue', name: 'London'})
       ];
-      var result = options.check(player, game);
+      var result = options.cure(player);
       assert.deepEqual(result, {
         'New York': ['cure'],
         'Chicago' : ['cure'],
@@ -49,7 +62,7 @@ describe('playOptions', function(){
         new Card({group: 'blue', name: 'Atlanta'}),
         new Card({group: 'blue', name: 'Montreal'})
       ];
-      var result = options.check(player, game);
+      var result = options.cure(player);
       assert.deepEqual(result, {});
     });
 
