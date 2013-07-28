@@ -36,8 +36,8 @@ describe('PlayerDeck', function () {
       assert(card.name);
     });
 
-    it('has a group', function () {
-      assert(card.group);
+    it('has a color or group', function () {
+      assert(card.color || card.group);
     });
 
     describe('event cards', function () {

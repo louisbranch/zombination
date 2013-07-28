@@ -36,7 +36,7 @@ var DEFAULTS = function () {
     },
     players: [],
     playersOrder: [],
-    zombiesPerGroup: 24,
+    zombiesPerColor: 24,
     zombies: {}
   };
 };

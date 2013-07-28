@@ -28,8 +28,8 @@ describe('ZombieDeck', function () {
       assert(card.name);
     });
 
-    it('has a group', function () {
-      assert(card.group);
+    it('has a color', function () {
+      assert(card.color);
     });
 
   });

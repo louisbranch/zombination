@@ -6,8 +6,8 @@ describe('deck formater', function(){
   var deck;
   var map = {
     nodes: {
-      'City1': {group: 1},
-      'City2': {group: 2}
+      'City1': {color: 'blue'},
+      'City2': {color: 'yellow'}
     }
   };
 
@@ -20,7 +20,7 @@ describe('deck formater', function(){
   });
 
   it('copies the city properties', function() {
-    assert.deepEqual(deck[0], {name: 'City1', group: 1});
+    assert.deepEqual(deck[0], {name: 'City1', color: 'blue'});
   });
 
 });

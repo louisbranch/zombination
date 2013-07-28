@@ -13,7 +13,7 @@ describe('groups', function(){
 
   describe('.create', function(){
 
-    it('creates a key/value map with group and max zombies per group', function(){
+    it('creates a key/value map with colors and max zombies per colors', function(){
       assert.deepEqual(groups.create(game), { yellow: 24, blue: 24, black: 24, red: 24 });
     });
 
@@ -21,11 +21,11 @@ describe('groups', function(){
 
   describe('.add', function(){
 
-    it('adds a zombie to the group pool', function(){
-      var zombie = {group: 'yellow'};
-      pool = game.zombies[zombie.group];
+    it('adds a zombie to the color pool', function(){
+      var zombie = {color: 'yellow'};
+      pool = game.zombies[zombie.color];
       groups.add(zombie, game);
-      assert.equal(game.zombies[zombie.group], pool + 1);
+      assert.equal(game.zombies[zombie.color], pool + 1);
     });
 
   });
@@ -34,17 +34,17 @@ describe('groups', function(){
     var zombie, pool;
 
     beforeEach(function(){
-      zombie = {group: 'yellow'};
+      zombie = {color: 'yellow'};
     });
 
-    it('removes a zombie from the group pool', function(){
-      pool = game.zombies[zombie.group];
+    it('removes a zombie from the color pool', function(){
+      pool = game.zombies[zombie.color];
       groups.remove(zombie, game);
-      assert.equal(game.zombies[zombie.group], pool - 1);
+      assert.equal(game.zombies[zombie.color], pool - 1);
     });
 
     it('emits game:over event if pool reaches 0', function(){
-      game.zombies[zombie.group] = 1;
+      game.zombies[zombie.color] = 1;
       groups.remove(zombie, game);
       assert(game.e.calledWith('game:over', 'Ran out of zombies!'));
     });

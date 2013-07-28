@@ -8,8 +8,8 @@ describe('Map', function () {
 
     beforeEach(function () {
       var json = {"nodes": {
-        "City1": {"group": 1},
-        "City2": {"group": 2}
+        "City1": {"color": "red"},
+        "City2": {"color": "blue"}
         }, "links" : [
           {"City1":"City2"}
         ]

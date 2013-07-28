@@ -74,11 +74,11 @@ describe('playOptions', function(){
 
     it('can cure a color with 5 or more cards', function(){
       player.hand = [
-        new Card({group: 'blue', name: 'New York'}),
-        new Card({group: 'blue', name: 'Chicago'}),
-        new Card({group: 'blue', name: 'Atlanta'}),
-        new Card({group: 'blue', name: 'Montreal'}),
-        new Card({group: 'blue', name: 'London'})
+        new Card({color: 'blue', name: 'New York'}),
+        new Card({color: 'blue', name: 'Chicago'}),
+        new Card({color: 'blue', name: 'Atlanta'}),
+        new Card({color: 'blue', name: 'Montreal'}),
+        new Card({color: 'blue', name: 'London'})
       ];
       var result = options.cure(player);
       assert.deepEqual(result, {

@@ -10,19 +10,19 @@ describe('zombies', function () {
   beforeEach(function () {
     game = new Game();
     game.e = sinon.spy();
-    city = {name: 'Fake City', group: 1, zombies: [], connections: []};
+    city = {name: 'Fake City', color: 'blue', zombies: [], connections: []};
   });
 
   describe('.infect', function () {
 
     it('adds a zombie to a city', function () {
       zombies.infect(city, {}, game);
-      assert.deepEqual(city.zombies, [{group: 1}]);
+      assert.deepEqual(city.zombies, [{color: 'blue'}]);
     });
 
     it('adds up to 3 zombies to a city', function () {
       zombies.infect(city, {zombies: 4}, game);
-      assert.deepEqual(city.zombies, [{group: 1}, {group: 1}, {group: 1}]);
+      assert.deepEqual(city.zombies, [{color: 'blue'}, {color: 'blue'}, {color: 'blue'}]);
     });
 
     it('emits outbreak event if city would have more than 3 zombies', function () {

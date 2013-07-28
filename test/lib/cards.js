@@ -28,11 +28,11 @@ describe('cards', function () {
     it('list all cards options on the player hand', function(){
       player.position = game.map['New York'];
       player.hand = [
-        new Card({group: 'blue', name: 'New York'}),
-        new Card({group: 'blue', name: 'Chicago'}),
-        new Card({group: 'blue', name: 'Atlanta'}),
-        new Card({group: 'blue', name: 'Montreal'}),
-        new Card({group: 'blue', name: 'London'})
+        new Card({color: 'blue', name: 'New York'}),
+        new Card({color: 'blue', name: 'Chicago'}),
+        new Card({color: 'blue', name: 'Atlanta'}),
+        new Card({color: 'blue', name: 'Montreal'}),
+        new Card({color: 'blue', name: 'London'})
       ];
       var result = cards.check(player, game);
       assert.deepEqual(result, {

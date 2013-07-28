@@ -5,7 +5,7 @@ describe('.new', function(){
   var city;
 
   beforeEach(function(){
-    city = new City('Rio', {group: 1});
+    city = new City('Rio', {color: 'red'});
   });
 
   it('has a name', function(){
@@ -13,7 +13,7 @@ describe('.new', function(){
   });
 
   it('extends attributes passed', function(){
-    assert.equal(city.group, 1);
+    assert.equal(city.color, 'red');
   });
 
   it('has an empty zombies list', function(){

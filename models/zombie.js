@@ -1,9 +1,9 @@
 module.exports = Zombie;
 
-function Zombie(group) {
-  this.group = group;
+function Zombie(color) {
+  this.color = color;
 }
 
 Zombie.prototype.toString = function () {
-  return this.group + " ZOMBIE!!!";
+  return this.color + " ZOMBIE!!!";
 };
