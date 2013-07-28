@@ -7,11 +7,10 @@ var Player = require('../../models/player');
 var Card = require('../../models/card');
 
 describe('playOptions', function(){
-  var game, player, city;
+  var game, player;
 
   beforeEach(function(){
     game = new Game();
-    city = game.map[_.keys(game.map)[0]];
     player = new Player({position: city});
   });
 
@@ -112,6 +111,40 @@ describe('playOptions', function(){
       assert.deepEqual(result, {
         'Place a Free HQ' : ['special']
       });
+    });
+
+  });
+
+  describe('.trade', function(){
+    var city, friend;
+
+    describe('when two players are in the same city', function(){
+
+      beforeEach(function(){
+        city = game.map['New York'];
+        friend = new Player({position: city});
+        player.position = city;
+        game.players = [player, friend];
+      });
+
+      it('lists card with the same city name that can be traded', function(){
+        player.hand = [new Card({name: 'New York'})];
+        var result = options.trade(player, game);
+        assert.deepEqual(result, {
+          'New York' : ['trade']
+        });
+      });
+
+    });
+
+    describe('when players are not in the same city', function(){
+
+      it('does not list card', function(){
+        player.hand = [new Card({name: city.name})];
+        var result = options.trade(player, game);
+        assert.deepEqual(result, {});
+      });
+
     });
 
   });
