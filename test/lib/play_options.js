@@ -92,13 +92,26 @@ describe('playOptions', function(){
 
     it('cant purge a color with less than 5 cards', function(){
       player.hand = [
-        new Card({group: 'blue', name: 'New York'}),
-        new Card({group: 'blue', name: 'Chicago'}),
-        new Card({group: 'blue', name: 'Atlanta'}),
-        new Card({group: 'blue', name: 'Montreal'})
+        new Card({color: 'blue', name: 'New York'}),
+        new Card({color: 'blue', name: 'Chicago'}),
+        new Card({color: 'blue', name: 'Atlanta'}),
+        new Card({color: 'blue', name: 'Montreal'})
       ];
       var result = options.purge(player);
       assert.deepEqual(result, {});
+    });
+
+  });
+
+  describe('.special', function(){
+
+    it('lists all special cards', function(){
+      var card = new Card({group: 'special', name: 'Place a Free HQ'});
+      player.hand = [card];
+      var result = options.special(player);
+      assert.deepEqual(result, {
+        'Place a Free HQ' : ['special']
+      });
     });
 
   });
