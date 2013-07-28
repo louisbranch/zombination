@@ -1,8 +1,9 @@
 var assert = require('assert');
 var sinon = require('sinon');
-var cards = require('../../lib/cards.js');
-var Game = require('../../models/game.js');
-var Player = require('../../models/player.js');
+var cards = require('../../lib/cards');
+var Game = require('../../models/game');
+var Player = require('../../models/player');
+var Card = require('../../models/card');
 
 describe('cards', function () {
   var game, card, player;
@@ -20,6 +21,29 @@ describe('cards', function () {
       cards.add(list, card);
       assert.equal(list[0], card);
     });
+  });
+
+  describe('.check', function(){
+
+    it('list all cards options on the player hand', function(){
+      player.position = game.map['New York'];
+      player.hand = [
+        new Card({group: 'blue', name: 'New York'}),
+        new Card({group: 'blue', name: 'Chicago'}),
+        new Card({group: 'blue', name: 'Atlanta'}),
+        new Card({group: 'blue', name: 'Montreal'}),
+        new Card({group: 'blue', name: 'London'})
+      ];
+      var result = cards.check(player, game);
+      assert.deepEqual(result, {
+        'New York': ['cure', 'flyFrom', 'placeHQ'],
+        'Chicago' : ['cure', 'flyTo'],
+        'Atlanta' : ['cure', 'flyTo'],
+        'Montreal': ['cure', 'flyTo'],
+        'London'  : ['cure', 'flyTo']
+      });
+    });
+
   });
 
   describe('.draw', function () {
