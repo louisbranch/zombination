@@ -18,7 +18,6 @@ describe('playOptions', function(){
   describe('.fly', function(){
 
     beforeEach(function(){
-
       player.hand = [new Card({name: 'New York'})];
     });
 
@@ -31,6 +30,42 @@ describe('playOptions', function(){
       player.position = game.map['New York'];
       var result = options.fly(player);
       assert.deepEqual(result, {'New York': ['flyFrom']});
+    });
+
+  });
+
+  describe('.placeHQ', function(){
+
+    beforeEach(function(){
+      player.hand = [new Card({name: 'New York'})];
+    });
+
+    describe('when there is a card with same name as current city', function(){
+
+      beforeEach(function(){
+        player.position = game.map['New York'];
+      });
+
+      it('can place a HQ if city doesnt have a hq', function(){
+        var result = options.placeHQ(player, game);
+        assert.deepEqual(result, {'New York': ['placeHQ']});
+      });
+
+      it('can place a HQ if city doesnt have a hq', function(){
+        player.position.hq = true;
+        var result = options.placeHQ(player, game);
+        assert.deepEqual(result, {});
+      });
+
+    });
+
+    describe('when there isnt a card with same name as current city', function(){
+
+      it('cant place a HQ', function(){
+        var result = options.placeHQ(player, game);
+        assert.deepEqual(result, {});
+      });
+
     });
 
   });
