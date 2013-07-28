@@ -36,11 +36,11 @@ describe('cards', function () {
       ];
       var result = cards.check(player, game);
       assert.deepEqual(result, {
-        'New York': ['cure', 'flyFrom', 'placeHQ'],
-        'Chicago' : ['cure', 'flyTo'],
-        'Atlanta' : ['cure', 'flyTo'],
-        'Montreal': ['cure', 'flyTo'],
-        'London'  : ['cure', 'flyTo']
+        'New York': ['purge', 'flyFrom', 'placeHQ'],
+        'Chicago' : ['purge', 'flyTo'],
+        'Atlanta' : ['purge', 'flyTo'],
+        'Montreal': ['purge', 'flyTo'],
+        'London'  : ['purge', 'flyTo']
       });
     });
 

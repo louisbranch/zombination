@@ -70,9 +70,9 @@ describe('playOptions', function(){
 
   });
 
-  describe('.cure', function(){
+  describe('.purge', function(){
 
-    it('can cure a color with 5 or more cards', function(){
+    it('can purge a color with 5 or more cards', function(){
       player.hand = [
         new Card({color: 'blue', name: 'New York'}),
         new Card({color: 'blue', name: 'Chicago'}),
@@ -80,24 +80,24 @@ describe('playOptions', function(){
         new Card({color: 'blue', name: 'Montreal'}),
         new Card({color: 'blue', name: 'London'})
       ];
-      var result = options.cure(player);
+      var result = options.purge(player);
       assert.deepEqual(result, {
-        'New York': ['cure'],
-        'Chicago' : ['cure'],
-        'Atlanta' : ['cure'],
-        'Montreal': ['cure'],
-        'London'  : ['cure']
+        'New York': ['purge'],
+        'Chicago' : ['purge'],
+        'Atlanta' : ['purge'],
+        'Montreal': ['purge'],
+        'London'  : ['purge']
       });
     });
 
-    it('cant cure a color with less than 5 cards', function(){
+    it('cant purge a color with less than 5 cards', function(){
       player.hand = [
         new Card({group: 'blue', name: 'New York'}),
         new Card({group: 'blue', name: 'Chicago'}),
         new Card({group: 'blue', name: 'Atlanta'}),
         new Card({group: 'blue', name: 'Montreal'})
       ];
-      var result = options.cure(player);
+      var result = options.purge(player);
       assert.deepEqual(result, {});
     });
 
