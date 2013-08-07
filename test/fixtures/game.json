@@ -1,0 +1,431 @@
+{
+  "decks": {
+    "zombies": [
+      { "name": "São Paulo", "color": "yellow" },
+      { "name": "Ho Chi Mingh City", "color": "red" },
+      { "name": "Kinshasa", "color": "yellow" },
+      { "name": "Hong Kong", "color": "red" },
+      { "name": "Los Angeles", "color": "yellow" },
+      { "name": "Miami", "color": "yellow" },
+      { "name": "Khartoum", "color": "yellow" },
+      { "name": "Buenos Aires", "color": "yellow" },
+      { "name": "Bogotá", "color": "yellow" },
+      { "name": "Tehran", "color": "black" },
+      { "name": "Delhi", "color": "black" },
+      { "name": "Chennai", "color": "black" },
+      { "name": "Mumbai", "color": "black" },
+      { "name": "Lagos", "color": "yellow" },
+      { "name": "Jakarta", "color": "red" },
+      { "name": "Baghdad", "color": "black" },
+      { "name": "Kolkata", "color": "black" },
+      { "name": "Istanbul", "color": "black" },
+      { "name": "Taipei", "color": "red" },
+      { "name": "Montreal", "color": "blue" },
+      { "name": "St. Petersburg", "color": "blue" },
+      { "name": "New York", "color": "blue" },
+      { "name": "Atlanta", "color": "blue" },
+      { "name": "Algiers", "color": "black" },
+      { "name": "Johannesburg", "color": "blue" },
+      { "name": "Lima", "color": "yellow" },
+      { "name": "Madrid", "color": "blue" },
+      { "name": "Bangkok", "color": "red" },
+      { "name": "Manila", "color": "red" },
+      { "name": "Cairo", "color": "black" },
+      { "name": "London", "color": "blue" },
+      { "name": "Chicago", "color": "blue" },
+      { "name": "Tokyo", "color": "red" },
+      { "name": "Seoul", "color": "red" },
+      { "name": "Essen", "color": "blue" },
+      { "name": "Osaka", "color": "red" },
+      { "name": "Washington", "color": "blue" },
+      { "name": "San Francisco", "color": "blue" },
+      { "name": "Shangai", "color": "red" },
+      { "name": "Mexico City", "color": "yellow" },
+      { "name": "Beijing", "color": "red" },
+      { "name": "Paris", "color": "blue" },
+      { "name": "Moscow", "color": "black" },
+      { "name": "Santiago", "color": "yellow" },
+      { "name": "Sydney", "color": "red" },
+      { "name": "Milan", "color": "blue" },
+      { "name": "Riyad", "color": "black" },
+      { "name": "Karachi", "color": "black" }
+    ],
+    "players": [
+      { "name": "Chicago", "color": "blue" },
+      { "name": "Hong Kong", "color": "red" },
+      { "name": "Montreal", "color": "blue" },
+      { "name": "Lagos", "color": "yellow" },
+      { "name": "Resilient Population", "group": "events", "description": "FIXME"
+      },
+      { "name": "Miami", "color": "yellow" },
+      { "name": "Buenos Aires", "color": "yellow" },
+      { "name": "São Paulo", "color": "yellow" },
+      { "name": "Sydney", "color": "red" },
+      { "name": "Baghdad", "color": "black" },
+      { "name": "Bangkok", "color": "red" },
+      { "name": "London", "color": "blue" },
+      { "name": "Madrid", "color": "blue" },
+      { "name": "Delhi", "color": "black" },
+      { "name": "Seoul", "color": "red" },
+      { "name": "One Quite Night", "group": "events", "description": "FIXME"
+      },
+      { "name": "Atlanta", "color": "blue" },
+      { "name": "Lima", "color": "yellow" },
+      { "name": "Place a HQ", "group": "events", "description": "FIXME"
+      },
+      { "name": "St. Petersburg", "color": "blue" },
+      { "name": "Chennai", "color": "black" },
+      { "name": "Riyad", "color": "black" },
+      { "name": "Moscow", "color": "black" },
+      { "name": "Kolkata", "color": "black" },
+      { "name": "Washington", "color": "blue" },
+      { "name": "Khartoum", "color": "yellow" },
+      { "name": "Paris", "color": "blue" },
+      { "name": "Algiers", "color": "black" },
+      { "name": "Santiago", "color": "yellow" },
+      { "name": "Osaka", "color": "red" },
+      { "name": "Taipei", "color": "red" },
+      { "name": "Shangai", "color": "red" },
+      { "name": "Los Angeles", "color": "yellow" },
+      { "name": "Forecast", "group": "events", "description": "FIXME"
+      },
+      { "name": "Karachi", "color": "black" },
+      { "name": "Essen", "color": "blue" },
+      { "name": "Bogotá", "color": "yellow" },
+      { "name": "Cairo", "color": "black" },
+      { "name": "Tehran", "color": "black" },
+      { "name": "Tokyo", "color": "red" },
+      { "name": "Airlift", "group": "events", "description": "FIXME"
+      },
+      { "name": "San Francisco", "color": "blue" },
+      { "name": "Kinshasa", "color": "yellow" },
+      { "name": "Jakarta", "color": "red" },
+      { "name": "Beijing", "color": "red" },
+      { "name": "Mexico City", "color": "yellow" },
+      { "name": "Johannesburg", "color": "blue" },
+      { "name": "Ho Chi Mingh City", "color": "red" },
+      { "name": "Istanbul", "color": "black" },
+      { "name": "New York", "color": "blue" },
+      { "name": "Manila", "color": "red" },
+      { "name": "Mumbai", "color": "black" },
+      { "name": "Milan", "color": "blue" }
+    ]
+  },
+  "difficulty": "normal",
+  "infectionProgress": [ 2, 2, 2, 3, 3, 4, 4 ],
+  "infectionRateIndex": 0,
+  "epidemicCardsPerLevel": {
+    "easy": 4,
+    "normal": 5,
+    "hard": 6
+  },
+  "minPlayers": 2,
+  "map": {
+    "Santiago": {
+      "name": "Santiago",
+      "zombies": [],
+      "connections": [ "Lima" ],
+      "color": "yellow"
+    },
+    "Lima": {
+      "name": "Lima",
+      "zombies": [],
+      "connections": [ "Santiago", "Bogotá", "Mexico City" ],
+      "color": "yellow"
+    },
+    "Bogotá": {
+      "name": "Bogotá",
+      "zombies": [],
+      "connections": [ "Lima", "Buenos Aires", "Mexico City", "São Paulo" ],
+      "color": "yellow"
+    },
+    "Buenos Aires": {
+      "name": "Buenos Aires",
+      "zombies": [],
+      "connections": [ "Bogotá", "São Paulo" ],
+      "color": "yellow"
+    },
+    "São Paulo": {
+      "name": "São Paulo",
+      "zombies": [],
+      "connections": [ "Bogotá", "Buenos Aires", "Lagos", "Madrid" ],
+      "color": "yellow"
+    },
+    "Mexico City": {
+      "name": "Mexico City",
+      "zombies": [],
+      "connections": [ "Lima", "Bogotá", "Chicago", "Los Angeles", "Miami" ],
+      "color": "yellow"
+    },
+    "Miami": {
+      "name": "Miami",
+      "zombies": [],
+      "connections": [ "Mexico City", "Atlanta", "Washington" ],
+      "color": "yellow"
+    },
+    "Los Angeles": {
+      "name": "Los Angeles",
+      "zombies": [],
+      "connections": [ "Mexico City", "Chicago", "San Francisco", "Sydney" ],
+      "color": "yellow"
+    },
+    "Lagos": {
+      "name": "Lagos",
+      "zombies": [],
+      "connections": [ "São Paulo", "Khartoum", "Kinshasa" ],
+      "color": "yellow"
+    },
+    "Khartoum": {
+      "name": "Khartoum",
+      "zombies": [],
+      "connections": [ "Lagos", "Cairo", "Johannesburg", "Kinshasa" ],
+      "color": "yellow"
+    },
+    "Kinshasa": {
+      "name": "Kinshasa",
+      "zombies": [],
+      "connections": [ "Lagos", "Khartoum", "Johannesburg" ],
+      "color": "yellow"
+    },
+    "Johannesburg": {
+      "name": "Johannesburg",
+      "zombies": [],
+      "connections": [ "Khartoum", "Kinshasa" ],
+      "color": "blue"
+    },
+    "San Francisco": {
+      "name": "San Francisco",
+      "zombies": [],
+      "connections": [ "Los Angeles", "Chicago", "Manila", "Tokyo" ],
+      "color": "blue"
+    },
+    "Chicago": {
+      "name": "Chicago",
+      "zombies": [],
+      "connections": [ "Mexico City", "Los Angeles", "San Francisco", "Atlanta", "Montreal" ],
+      "color": "blue"
+    },
+    "Atlanta": {
+      "name": "Atlanta",
+      "zombies": [],
+      "connections": [ "Miami", "Chicago", "Washington" ],
+      "color": "blue",
+      "start": true
+    },
+    "Montreal": {
+      "name": "Montreal",
+      "zombies": [],
+      "connections": [ "Chicago", "New York", "Washington" ],
+      "color": "blue"
+    },
+    "Washington": {
+      "name": "Washington",
+      "zombies": [],
+      "connections": [ "Miami", "Atlanta", "Montreal", "New York" ],
+      "color": "blue"
+    },
+    "New York": {
+      "name": "New York",
+      "zombies": [],
+      "connections": [ "Montreal", "Washington", "London", "Madrid" ],
+      "color": "blue"
+    },
+    "London": {
+      "name": "London",
+      "zombies": [],
+      "connections": [ "New York", "Essen", "Paris", "Madrid" ],
+      "color": "blue"
+    },
+    "Madrid": {
+      "name": "Madrid",
+      "zombies": [],
+      "connections": [ "São Paulo", "New York", "London", "Algiers", "Paris" ],
+      "color": "blue"
+    },
+    "Paris": {
+      "name": "Paris",
+      "zombies": [],
+      "connections": [ "London", "Madrid", "Algiers", "Essen", "Milan" ],
+      "color": "blue"
+    },
+    "Essen": {
+      "name": "Essen",
+      "zombies": [],
+      "connections": [ "London", "Paris", "St. Petersburg", "Milan" ],
+      "color": "blue"
+    },
+    "Milan": {
+      "name": "Milan",
+      "zombies": [],
+      "connections": [ "Paris", "Essen", "Istanbul" ],
+      "color": "blue"
+    },
+    "St. Petersburg": {
+      "name": "St. Petersburg",
+      "zombies": [],
+      "connections": [ "Essen", "Istanbul", "Moscow" ],
+      "color": "blue"
+    },
+    "Algiers": {
+      "name": "Algiers",
+      "zombies": [],
+      "connections": [ "Madrid", "Paris", "Cairo", "Istanbul" ],
+      "color": "black"
+    },
+    "Cairo": {
+      "name": "Cairo",
+      "zombies": [],
+      "connections": [ "Khartoum", "Algiers", "Baghdad", "Istanbul", "Riyad" ],
+      "color": "black"
+    },
+    "Istanbul": {
+      "name": "Istanbul",
+      "zombies": [],
+      "connections": [ "Milan", "St. Petersburg", "Algiers", "Cairo", "Baghdad", "Moscow" ],
+      "color": "black"
+    },
+    "Moscow": {
+      "name": "Moscow",
+      "zombies": [],
+      "connections": [ "St. Petersburg", "Istanbul", "Tehran" ],
+      "color": "black"
+    },
+    "Baghdad": {
+      "name": "Baghdad",
+      "zombies": [],
+      "connections": [ "Cairo", "Istanbul", "Karachi", "Riyad", "Tehran" ],
+      "color": "black"
+    },
+    "Riyad": {
+      "name": "Riyad",
+      "zombies": [],
+      "connections": [ "Cairo", "Baghdad", "Karachi" ],
+      "color": "black"
+    },
+    "Tehran": {
+      "name": "Tehran",
+      "zombies": [],
+      "connections": [ "Moscow", "Baghdad", "Delhi", "Karachi" ],
+      "color": "black"
+    },
+    "Karachi": {
+      "name": "Karachi",
+      "zombies": [],
+      "connections": [ "Baghdad", "Riyad", "Tehran", "Delhi", "Mumbai" ],
+      "color": "black"
+    },
+    "Delhi": {
+      "name": "Delhi",
+      "zombies": [],
+      "connections": [ "Tehran", "Karachi", "Chennai", "Kolkata", "Mumbai" ],
+      "color": "black"
+    },
+    "Mumbai": {
+      "name": "Mumbai",
+      "zombies": [],
+      "connections": [ "Karachi", "Delhi", "Kolkata", "Chennai" ],
+      "color": "black"
+    },
+    "Chennai": {
+      "name": "Chennai",
+      "zombies": [],
+      "connections": [ "Delhi", "Mumbai", "Bangkok", "Jakarta", "Kolkata" ],
+      "color": "black"
+    },
+    "Kolkata": {
+      "name": "Kolkata",
+      "zombies": [],
+      "connections": [ "Delhi", "Mumbai", "Chennai", "Bangkok", "Hong Kong" ],
+      "color": "black"
+    },
+    "Bangkok": {
+      "name": "Bangkok",
+      "zombies": [],
+      "connections": [ "Chennai", "Kolkata", "Ho Chi Mingh City", "Hong Kong", "Jakarta" ],
+      "color": "red"
+    },
+    "Jakarta": {
+      "name": "Jakarta",
+      "zombies": [],
+      "connections": [ "Chennai", "Bangkok", "Ho Chi Mingh City", "Sydney" ],
+      "color": "red"
+    },
+    "Beijing": {
+      "name": "Beijing",
+      "zombies": [],
+      "connections": [ "Seoul", "Shangai" ],
+      "color": "red"
+    },
+    "Shangai": {
+      "name": "Shangai",
+      "zombies": [],
+      "connections": [ "Beijing", "Hong Kong", "Seoul", "Taipei", "Tokyo" ],
+      "color": "red"
+    },
+    "Hong Kong": {
+      "name": "Hong Kong",
+      "zombies": [],
+      "connections": [ "Kolkata", "Bangkok", "Shangai", "Ho Chi Mingh City", "Manila", "Taipei" ],
+      "color": "red"
+    },
+    "Ho Chi Mingh City": {
+      "name": "Ho Chi Mingh City",
+      "zombies": [],
+      "connections": [ "Bangkok", "Jakarta", "Hong Kong", "Manila", "Sydney" ],
+      "color": "red"
+    },
+    "Seoul": {
+      "name": "Seoul",
+      "zombies": [],
+      "connections": [ "Beijing", "Shangai", "Tokyo" ],
+      "color": "red"
+    },
+    "Taipei": {
+      "name": "Taipei",
+      "zombies": [],
+      "connections": [ "Shangai", "Hong Kong", "Manila", "Osaka" ],
+      "color": "red"
+    },
+    "Manila": {
+      "name": "Manila",
+      "zombies": [],
+      "connections": [ "San Francisco", "Hong Kong", "Ho Chi Mingh City", "Taipei", "Sydney" ],
+      "color": "red"
+    },
+    "Sydney": {
+      "name": "Sydney",
+      "zombies": [],
+      "connections": [ "Los Angeles", "Jakarta", "Ho Chi Mingh City", "Manila" ],
+      "color": "red"
+    },
+    "Tokyo": {
+      "name": "Tokyo",
+      "zombies": [],
+      "connections": [ "San Francisco", "Shangai", "Seoul", "Osaka" ],
+      "color": "red"
+    },
+    "Osaka": {
+      "name": "Osaka",
+      "zombies": [],
+      "connections": [ "Taipei", "Tokyo" ],
+      "color": "red"
+    }
+  },
+  "maxHQs": 8,
+  "maxOutbreaks": 8,
+  "maxPlayers": 5,
+  "outbreaks": 0,
+  "piles": {
+    "zombies": [],
+    "players": []
+  },
+  "players": [],
+  "playersOrder": [],
+  "zombiesPerColor": 24,
+  "zombies": {
+    "yellow": 24,
+    "blue": 24,
+    "black": 24,
+    "red": 24
+  }
+}

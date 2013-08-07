@@ -27,6 +27,6 @@ function parseFile(file, map) {
 }
 
 function createConnections (target, source) {
-  target.connections.push(source);
-  source.connections.push(target);
+  target.connections.push(source.name);
+  source.connections.push(target.name);
 }

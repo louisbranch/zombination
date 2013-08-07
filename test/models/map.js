@@ -22,11 +22,11 @@ describe('Map', function () {
     });
 
     it('links all sources as target connections', function () {
-      assert(map.City1.connections[0] == map.City2);
+      assert(map.City1.connections[0] == map.City2.name);
     });
 
     it('links all targets as sources connections', function () {
-      assert(map.City2.connections[0] == map.City1);
+      assert(map.City2.connections[0] == map.City1.name);
     });
 
     it('adds empty zombie list to each city', function () {

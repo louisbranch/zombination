@@ -36,8 +36,8 @@ describe('zombies', function () {
     });
 
     it('does not outbreak the same city twice during the same call', function () {
-      var crowded = {name: 'crowded', zombies: 3, connections: [city]};
-      city.connections = [crowded];
+      var crowded = {name: 'crowded', zombies: 3, connections: [city.name]};
+      city.connections = [crowded.name];
       zombies.infect(city, {zombies: 4}, game);
       assert(game.e.withArgs('zombies:outbreak', city).calledOnce);
     });
@@ -47,7 +47,7 @@ describe('zombies', function () {
   describe('.outbreak', function () {
 
     it('emits infect event with all cities connected to a city outbreaking', function () {
-      city.connections = [{zombies: []}, {zombies: []}, {zombies: []}];
+      city.connections = ['Atlanta', 'Chicago', 'Washington'];
       zombies.outbreak(city, {}, game);
       assert.equal(game.e.withArgs('zombies:infect').callCount, city.connections.length)
     });
