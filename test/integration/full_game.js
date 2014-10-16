@@ -1,6 +1,7 @@
 var assert = require('assert');
 var Game = require('../../models/game.js');
 var Player = require('../../models/player.js');
+var fixture = require('../fixtures/game.json');
 
 describe('Game', function(){
 
@@ -11,7 +12,16 @@ describe('Game', function(){
 
     game.e('players:join', player);
     game.e('players:join', player2);
-    game.e('game:start');
+
+    // Replace game data with fixed data
+    game.map = fixture.map;
+    game.decks = fixture.decks;
+
+    // Skip epidemic shuffle step
+    game.e('cards:initialHand');
+    game.e('cities:initialPosition');
+    game.e('zombies:initialInfection');
+    game.e('turns:first');
 
     player = game.turn.player;
 
@@ -26,8 +36,8 @@ describe('Game', function(){
     game.e('players:act', player, ['cities:walk', player, 'London']);
     assert.equal(player.actions, 4);
 
-    // Draw 2 more cards (one can be an epidemic card)
-    assert(player.hand.length > 4);
+    // Draw 2 more cards
+    assert.equal(player.hand.length, 6);
 
     // Infect cities
     assert.equal(game.decks.zombies.length, 37);
